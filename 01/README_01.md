@@ -62,5 +62,24 @@ JS 実例: wikipedia.org, inverse.com, [apple.com](https://www.apple.com/iphone-
 
 ---
 
+JavaScript は **`.js`** という拡張子のファイルに記述する。
+`.js` ファイルは **`<script>` という HTML タグ** で読み込む。
 
+
+### 書き方:
+```html
+<script src="読み込むJSファイル"></script>
+```
+
+---
+
+### 演習:
+1. `01` フォルダの `index.html` をブラウザと VSCode で開く。
+2. `index.html` の **`<head>` タグの中に `<script>` タグを記述** し、
+    `01` フォルダの **`test.js`** を読み込む。
+3. ブラウザを更新して結果を確認する。
+4. `test.js` を VSCode で開き、**コードを改変**してみる。
+5. 再度ブラウザを更新し、結果の変化を確認する。
+
+---
 
