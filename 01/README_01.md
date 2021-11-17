@@ -93,3 +93,41 @@ alert('Hello World!');
 3. ブラウザを更新して動作を確認する。
 4. `math.js` を VSCode で開き、**正しい動作になるようコードを書き換える**。
 
+---
+
+# 進化するウェブと JS の活用事例
+技術は需要があるからこそ進化する。
+
+- 昔はイケてなかった JS
+- Google や Facebook, Twitter の台頭
+- Google による YouTube 買収
+- Google 開発による、すごく速い JS 実行エンジン、**V8**
+- WebGL により 3D コンテンツがブラウザで動くように
+
+---
+
+### インタラクティブアート:
+- [Elastic Man (WebGL)](https://www.adultswim.com/etcetera/elastic-man/)
+
+### ゲーム
+- [Cross Code (ImpactJS)](http://www.cross-code.com/en/home)
+- [Tanuki Sunset (Unity)](https://v6p9d9t4.ssl.hwcdn.net/html/1756009/WebGL/index.html?v=1574334742)
+
+---
+
+# プログラミングでアートする
+技術（Tech）と 芸術（Art）
+
+---
+
+### 技術によって創出されるアートたち
+
+- [ライゾマティクスのインスタレーション](https://rhizomatiks.com/work/)
+- [フラクタルアート](https://www.youtube.com/results?search_query=fractal+art)
+- [p5.js による作例](https://showcase.p5js.org/#/2021-All)
+
+---
+
+## p5.js
+プログラミングによってアートやインタラクティブコンテンツ, ゲームなどを制作するための **JavaScript 用ライブラリ。**
+
