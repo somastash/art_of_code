@@ -9,17 +9,19 @@ theme: default
         font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
         line-height: 1.75;
     }
-    h1,h2,h3 {
+    h1 {
+        font-family: Futura, sans-serif;
+    }
+    h2,h3 {
         font-family:
             "Avenir Next",
-            Futura,
             sans-serif;
 
         line-height: 1.25;
     }
 </style>
 
-# art_of_code #1
+# ART_OF_CODE #1
 p5.js で学ぶ JavaScript
 
 ---
@@ -133,4 +135,88 @@ alert('Hello World!');
 ゲームなどを制作するための **JavaScript 用ライブラリ。**
 JS の文法に沿ったコードを書きつつ、
 p5.js によって提供される様々な機能を必要に応じて呼び出すことで、
-効率よく制作に注力することができる。
+クリエイティブなコーディングに注力することができる。
+
+---
+
+## p5.js で JS を書いてみよう
+1. まずは [p5js.org](https://p5js.org/) にアクセスする。
+2. 左のメニューから [Editor](https://editor.p5js.org/) をクリック。
+3. このブラウザ上のページだけで**コードの編集から実行**までを行うことができる。
+
+---
+
+## p5.js Editor の使い方
+1. 画面の左側でコードの編集を行う。
+2. :arrow_forward: ボタンでコードの実行。
+    実行結果が右側の `Preview` エリアに表示される。
+
+また、`Auto-refresh` にチェックを付ければ、
+コードの編集が自動的に `Preview` に反映される。
+
+---
+
+## "スケッチ" の書き方
+p5.js を使って書かれたコードは **"スケッチ"** と呼ばれる。
+スケッチの書き方には **p5.js 独自のルール**が存在する。
+ただし、コード自体は JavaScript なので、
+スケッチを書く過程で覚えた JS の文法は、
+**スケッチ以外の JS プログラミングにも応用できる。**
+
+---
+
+### ルール 1:
+**`setup` 関数** は
+スケッチの実行時、**最初に一回だけ実行**される。
+
+```js
+function setup() {
+    // ここは最初に一回だけ実行される。
+}
+```
+
+（ "関数" とは何かは後々解説します。）
+
+---
+
+### ルール 2:
+**`draw` 関数** は
+`setup` 関数の実行後、**一定の間隔で実行され続ける**。
+
+```js
+function draw() {
+    // ここは一定の間隔で実行され続ける
+}
+```
+
+（ デフォルト設定では **毎秒 60 回**。）
+
+---
+
+### ルール 3:
+`setup` 関数内で、
+**必ず `createCanvas` 関数**を呼び出すこと。
+
+```js
+function setup() {
+    createCanvas(1280, 720); // 幅, 高さ
+}
+```
+
+`createCanvas` は指定した幅と高さで**スケッチの最大描画エリア**を決定する。
+
+---
+
+## スケッチを書いてみよう
+p5.js Editor を開くと、以下の基本コードが出力される。
+このコードに変更を付け加えていこう。
+
+```js
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+}
+```
