@@ -25,18 +25,23 @@ function draw() {
     mode = 'inflate'; // ふくらみモードに移行
   }
 
-  // ふくらみ中
-  if (mode == 'inflate') {
-    size = size + (sizeMax - size) * 0.1; // size 増やす
-  }
-
-  // しぼみ中
-  if (mode == 'deflate') {
-    size = size - (size - sizeMin) * 0.2; // size 減らす
-  }
+  // ハートのサイズを更新
+  size = newSize(size);
 
   // ハートを描画
   drawHeart(size + 100, 100, 100); // 引数は R, G, B
+}
+
+// ハートのサイズを計算し、結果を返す関数
+function newSize(sizeNow) {
+  // ふくらみ中
+  if (mode == 'inflate') {
+    return sizeNow + (sizeMax - sizeNow) * 0.1; // size 増やす
+  }
+  // しぼみ中
+  if (mode == 'deflate') {
+    return sizeNow - (sizeNow - sizeMin) * 0.2; // size 減らす
+  }
 }
 
 // ハートを描画する関数
