@@ -24,6 +24,7 @@ function draw() {
     rect(w/2, 0, w/2, h);
   }
 
+  // マウスと中心点の距離が 50 未満なら
   if (dist(mouseX, mouseY, w/2, h/2) < 50) {
     fill('rgba(255, 255, 0, 0.5)'); // 黄
     circle(w/2, h/2, 100);
