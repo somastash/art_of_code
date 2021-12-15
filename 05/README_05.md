@@ -410,3 +410,9 @@ codes.push('Golf'); // Foxtrot の次
 - `for` ループ
 
 を駆使し、**動くアート**を作ってみよう。
+
+---
+
+参考書籍のコード
+http://www.bnn.co.jp/support/generativedesign_p5js/
+
