@@ -19,7 +19,9 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  // 背景
+  fill('rgba(70, 50, 100, 0.2)'); // 半透明
+  rect(0, 0, w, h);
 
   // マウスボタンを押している時、引き寄せる
   if (mouseIsPressed) {
@@ -78,6 +80,13 @@ function drawBall(ball) {
   fill('white');
   noStroke();
   circle(-ball.size / 4, -ball.size / 4, ball.size / 4);
+
+  // V キーを押すとベクトル表示
+  if (keyIsDown(86)) {
+    stroke('yellow');
+    strokeWeight(4);
+    line(0, 0, ball.vx * 3, ball.vy * 3);
+  }
 
   pop(); // 基準点リセット
 }

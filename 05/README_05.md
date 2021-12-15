@@ -18,12 +18,25 @@ paginate: true
 
         line-height: 1.25;
     }
+    section.right {
+        text-align: right;
+    }
 </style>
 
 # ART_OF_CODE #5
 p5.js で学ぶ JavaScript
 
 ---
+
+<!-- class: right -->
+
+By Satoshi Soma / 相馬 聡
+github.com/amekusa
+Dec. 16, 2021
+
+---
+
+<!-- class: left -->
 
 ## 前回のおさらい 1/2
 
@@ -156,6 +169,75 @@ https://editor.p5js.org/amekusa/sketches/fThVmGvza
 
 ## オブジェクト
 プロパティで表現される、バーチャルな “モノ”
+
+---
+
+“モノ” は**単一の数値**では表現できない。
+どんなに単純な物体でも
+色, 形, 大きさ, 重さ
+といった、**複数の様々な情報から成り立っている**。
+
+![bg left:35% 75%](apple.png)
+
+---
+
+そのような “モノ” を JavaScript で表現するには
+**オブジェクト (object)** というデータ型を用いる。
+
+（データ型とは、数値や文字列といった値のタイプ（種類）のこと。）
+
+---
+
+オブジェクトは **1つ以上の属性（プロパティ）** から構成されており、
+このような書式で定義することができる。
+
+```js
+{
+    プロパティA: 値,
+    プロパティB: 値,
+    プロパティC: 値
+}
+```
+
+もちろんプロパティ名は自由に決めてよい。
+
+---
+
+例として :apple: をオブジェクトとして定義してみよう。
+
+```js
+let apple = {
+    color:  'red', // 色
+    size:   11,    // cm
+    weight: 474.9  // グラム
+};
+```
+
+`color`, `size`, `weight` という**三つのプロパティで構成されるオブジェクト**を定義し、
+それを変数 `apple` に代入している。
+
+---
+
+ゲームのキャラならこういう感じ（？）。
+
+```js
+let player = {
+    name: 'John',  // 名前
+    sex:  'male',  // 性別
+
+    lv:      1,    // レベル
+    exp:     0,    // 経験値
+
+    hp:    128,    // 体力
+    str:     9,    // ちから
+    agl:     3,    // 素早さ
+    fth:    12,    // 信仰心
+
+    wpn:  'gun'    // 武器
+};
+```
+
+![bg right:40%](knight.png)
 
 ---
 
