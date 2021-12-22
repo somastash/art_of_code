@@ -18,11 +18,11 @@ paginate: true
 
         line-height: 1.25;
     }
+    p {
+        text-shadow: 2px 2px 0 white
+    }
     section.right {
         text-align: right;
-    }
-    .cols {
-        display: flex;
     }
 </style>
 
@@ -204,3 +204,106 @@ https://editor.p5js.org/amekusa/sketches/UMign2Qg4
 https://editor.p5js.org/amekusa/sketches/OrVlqvNT7
 
 ---
+
+## とにかく p5.js で色々やってみよう
+ここがスタート地点。ジェネラティブアートの可能性を探っていこう
+
+---
+
+### 画像を読み込む
+p5.js において、画像は **オブジェクト** として取り扱う。
+**`loadImage()`** 関数に読み込みたい画像のパスを渡すと、
+**画像オブジェクト** が返り値として戻ってくる。
+
+```js
+let img; // 画像オブジェクトを入れる変数
+
+function preload() {
+  img = loadImage('画像ファイルへのパス');
+}
+```
+
+注意点として、このようなファイルの読み込み処理は
+必ず **`preload()`** 関数内で行う必要がある。
+
+`preload()` 関数は `setup()` 関数よりも先に実行される。
+
+---
+
+読み込んだ画像オブジェクトを単純に表示するだけなら
+**`image()`** 関数を使えば良い。
+
+```js
+image(img, 0, 0);
+```
+
+第 1 引数に表示したい画像オブジェクト,
+第 2, 第 3 引数は表示したい位置 (X, Y) を渡す。
+
+---
+
+しかし、そのまま表示するだけではあまり面白くはない。
+読み込んだ**画像データを元に、複雑な処理**を施してみよう。
+
+---
+
+そもそも、画像データとはどのようなデータだろうか。
+
+デジタルデータとしての画像とは、
+**整列した画素（ピクセル）の集合** にほかならない。
+そして、ピクセルとは **RGB 値で表現される色** のデータである。
+
+つまり、デジタル画像とは **色の配列** なのだ。
+
+![bg opacity:0.15](assets/pixels.png)
+
+---
+
+**`loadImage()`** 関数から返ってくる画像オブジェクトも、
+内部の **プロパティ** に **配列として色のデータ** を保持している。
+
+この配列にアクセスするには、まず **`loadPixels()`** 関数を呼んでから
+**`get()`** 関数を呼べばよい。
+
+---
+
+```js
+img.loadPixels();
+let c = img.get(0, 0); // 位置(0, 0) の色を取得
+```
+
+**`get()`** 関数は **画像上の指定された位置の色** を取得し、
+オブジェクトとして返してくれる。(左上が 0, 0）
+
+---
+
+取得した **色オブジェクト** は
+**`fill()`** や **`stroke()`** などの関数に渡すことで
+**描画色** として利用することが可能だ。
+
+```js
+img.loadPixels();
+let c = img.get(0, 0);
+fill(c);
+circle(mouseX, mouseY, 10);
+```
+
+---
+
+サンプルコードを見てみよう。
+
+`06/ColorPicker/sketch.js`
+https://editor.p5js.org/amekusa/sketches/-iyVpSKwJ
+
+---
+
+**`for` 文を活用**したサンプルコードも用意した。
+
+`06/Pic-Cells/sketch.js`
+https://editor.p5js.org/amekusa/sketches/0XDQSWwub
+
+---
+
+### サンプル集 by 俺
+https://editor.p5js.org/amekusa/collections/9jwIe3hqu
+
