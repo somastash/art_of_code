@@ -5,7 +5,7 @@ let nLines = 21; // 線の数
 function setup() {
   createCanvas(400, 400);
 
-  // 線オブジェクトを 30 個生成し、配列に入れる
+  // 線オブジェクトを 21 個生成し、配列に入れる
   for (let i = 0; i < nLines; i++) {
     let newLine = {};             // オブジェクト生成
     newLine.h = 0;                // 長さ

@@ -5,7 +5,7 @@ let nLines = 21; // 線の数
 function setup() {
   createCanvas(400, 400);
 
-  // 配列に 0 ~ 400 までの乱数を 30 個入れる
+  // 配列に 0 ~ 400 までの乱数を 21 個入れる
   for (let i = 0; i < nLines; i++) {
     lines.push(random(0, 400));
   }
