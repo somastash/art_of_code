@@ -370,7 +370,13 @@ function setup() {
 
 ---
 
+#### 音の大きさを取得する
+`06/MusicPlayer/sketch.js`
+https://editor.p5js.org/amekusa/sketches/-5YQoKdUJ
 
+#### 定位の移動, 波形の表示
+`06/MusicPlayer2/sketch.js`
+https://editor.p5js.org/amekusa/sketches/uCmyFkJ8F
 
 ---
 
