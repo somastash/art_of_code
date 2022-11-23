@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+:root {
+  font-size: 1.75em;
+  font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
+  line-height: 1.75;
+}
+h2,h3 {
+  font-family: "Avenir Next", sans-serif;
+  line-height: 1.25;
+}
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+strong {
+  background:linear-gradient(transparent 60%, #ff6 60%);
+}
+
+#cover {
+  .logo {
+    font-size: 64px;
+  }
+  .author {
+    text-align: right;
+    color: #0066;
+    font-weight: bold;
+    font-family: Optima;
+  }
+}
+
+.logo {
+  font-family: Futura, sans-serif;
+  font-weight: normal !important;
+  letter-spacing: .1em;
+  padding: 0;
+
+  &::before {
+    content: "[";
+    padding-right: .5em;
+  }
+  &::after {
+    content: "]";
+    padding-left: .5em;
+    text-shadow:
+      .6em 0 0 #80f8,
+      1.2em 0 0 #f206,
+      1.8em 0 0 #fb06;
+  }
+  &::before,
+  &::after {
+    font-family: Helvetica;
+    font-size: .9em;
+    font-weight: bold;
+    vertical-align: .13em;
+  }
+
+  b {
+    font-weight: bold;
+    letter-spacing: .3em;
+    text-shadow:
+      0 -.3em 0 #60f4,
+      0 -.75em 0 #0f66,
+      0 -1.4em 0 #ff08;
+  }
+}
