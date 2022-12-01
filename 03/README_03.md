@@ -1,27 +1,15 @@
 ---
 marp: true
-theme: default
 paginate: true
+theme: default
+style: @import "../.theme/style.css";
 ------
 
-<style>
-    :root {
-        font-size: 1.75em;
-        font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
-        line-height: 1.75;
-    }
-    h1,h2,h3 {
-        font-family:
-            "Avenir Next",
-            Futura,
-            sans-serif;
-
-        line-height: 1.25;
-    }
-</style>
-
-# ART_OF_CODE #3
-p5.js で学ぶ JavaScript
+<div id="cover">
+	<h1 class="logo">ART_OF_<b>CODE</b> #3</h1>
+	<p class="title">p5.js で学ぶ JavaScript #3</p>
+  <p class="author">&copy; 2022 Satoshi Soma</p>
+</div>
 
 ---
 
