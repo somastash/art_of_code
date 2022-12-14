@@ -1,15 +1,14 @@
 ---
 marp: true
 paginate: true
-theme: default
-style: @import "../.theme/style.css";
+theme: custom
 ------
 
-<div id="cover">
-	<h1 class="logo">ART_OF_<b>CODE</b> #4</h1>
-	<p class="title">p5.js で学ぶ JavaScript #4</p>
-  <p class="author">&copy; 2022 Satoshi Soma</p>
-</div>
+<!-- _class: cover -->
+
+<h1 class="logo">ART_OF_<b>CODE</b> #4</h1>
+<p class="title">p5.js で学ぶ JavaScript #4</p>
+<p class="author">&copy; 2022 Satoshi Soma</p>
 
 ---
 
