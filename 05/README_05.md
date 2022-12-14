@@ -1,44 +1,18 @@
 ---
 marp: true
-theme: default
 paginate: true
+theme: custom
 ------
 
-<style>
-    :root {
-        font-size: 1.75em;
-        font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
-        line-height: 1.75;
-    }
-    h1,h2,h3 {
-        font-family:
-            "Avenir Next",
-            Futura,
-            sans-serif;
+<!-- _class: cover -->
 
-        line-height: 1.25;
-    }
-    section.right {
-        text-align: right;
-    }
-</style>
-
-# ART_OF_CODE #5
-p5.js で学ぶ JavaScript
+<h1 class="logo">ART_OF_<b>CODE</b> #5</h1>
+<p class="title">p5.js で学ぶ JavaScript #5</p>
+<p class="author">&copy; 2022 Satoshi Soma</p>
 
 ---
 
-<!-- class: right -->
-
-By Satoshi Soma / 相馬 聡
-github.com/amekusa
-Dec. 16, 2021
-
----
-
-<!-- class: left -->
-
-## 前回のおさらい 1/2
+## 前回のおさらい 1/3
 
 ### `else`
 **`else`** 句は **`if` 文の直後**に書くことで、
@@ -46,10 +20,10 @@ Dec. 16, 2021
 
 ```js
 if (条件A) { // もし A が 真 なら
-    alert('A');
+  alert('A');
 
 } else {    // そうでないなら
-    alert('Not A');
+  alert('Not A');
 }
 ```
 
@@ -61,11 +35,11 @@ if (条件A) { // もし A が 真 なら
 
 ```js
 if (条件A) {
-    alert('Aは真'); // 条件A == true
+  alert('Aは真'); // 条件A == true
 
 } else if (条件B) {
-    alert('Aは偽'); // 条件A == false
-    alert('Bは真'); // 条件B == true
+  alert('Aは偽'); // 条件A == false
+  alert('Bは真'); // 条件B == true
 }
 ```
 
@@ -77,16 +51,16 @@ if (条件A) {
 
 ```js
 if (条件A) {
-    alert('Aは真'); // 条件A == true
+  alert('Aは真'); // 条件A == true
 
 } else if (条件B) {
-    alert('Aは偽'); // 条件A == false
-    alert('Bは真'); // 条件B == true
+  alert('Aは偽'); // 条件A == false
+  alert('Bは真'); // 条件B == true
 
 } else if (条件C) {
-    alert('Aは偽'); // 条件A == false
-    alert('Bも偽'); // 条件B == false
-    alert('Cは真'); // 条件C == true
+  alert('Aは偽'); // 条件A == false
+  alert('Bも偽'); // 条件B == false
+  alert('Cは真'); // 条件C == true
 }
 ```
 
@@ -98,72 +72,362 @@ https://editor.p5js.org/amekusa/sketches/3YAjHkOI-
 
 ---
 
-## 前回のおさらい 2/2
+## 前回のおさらい 2/3
 
-### `while` 文
-**ループ処理**を実現するための構文のひとつ。
-
-**`for` 文**が、決められた回数分だけループさせたい場合に適しているのに対して、
-**`while` 文**は、**ループの回数が不定**の場合に適している。
+### オブジェクト (Object)
+データで表現されるバーチャルな “モノ”
 
 ---
 
-書き方は `if` 文によく似ている。
+オブジェクトとは**データ型**の一つで、
+**複数の属性（プロパティ）**
+によって構成された、情報の一単位である。
+
 ```js
-while (条件) {
-    // 実行内容
-}
+let apple = {
+  color:   'red'  // 色
+  size:    11,    // 大きさ
+  weight:  474.9, // 重さ
+};
 ```
 
-**`条件` が 真 (true) の時のみ `{ }` 内が実行される**のも `if` 文と同じ。
-`if` 文と違う点は、
-**`条件` が 真 (true) である限り、`{ }` 内が繰り返し実行され続ける**ということ。
+オブジェクトも、数値や文字列と同様に
+**変数に代入することができる**。
+
+![bg left:35% 75%](assets/apple.png)
 
 ---
 
+オブジェクトのプロパティは、**変数とほぼ同じ**ように使うことができる。
+プロパティを参照するには **`オブジェクト.プロパティ名`** と書く。
+
 ```js
-let i = 0;
-while (i < 3) { // i が 3 未満の時
-    alert(i);
-    i++; // i を 1 増やす
-}
+alert( 'この林檎の、' );
+alert( '大きさは' + apple.size + 'cmです。' );
+alert( '重さは' + apple.weight + 'グラムです。' );
 ```
 
-例えばこのコードは `{ }` 内が **3 回連続で実行**される。
+---
 
-`for` 文で以下のように書いた場合と結果は同じだ。
+プロパティの**値を変更**したり、
+新しく**プロパティを追加**することも可能。
+
+```js
+let obj = {};     // 空のオブジェクトを作成
+obj.x = 300;      // プロパティ x を追加
+obj.x = 300 + 33; // x の値を変更
+```
+
+---
+
+## 前回のおさらい 3/3
+
+### 配列 (Array)
+一度にたくさんの変数を扱うために
+
+---
+
+配列とは **特殊なオブジェクト** の一つ。
+通常の変数が一つしか値を格納できないのに対して、
+**配列は複数の値を保持**することができる。
+
+配列を定義するには、
+**`[ ]`** の中に **`,（カンマ）` 区切り**で値を列挙する。
+
+```js
+let students = ['Alice', 'Bob', 'Charles']; // 3人の生徒
+```
+
+---
+
+配列に入れた**個々の値**のことを **要素 (Element)** と呼ぶ。
+特定の要素にアクセスするには、その要素が**先頭から何番目**にあるかを指定する。
+
+```js
+alert( students[0] ); // Alice
+alert( students[1] ); // Bob
+alert( students[2] ); // Charles
+```
+
+この番号は **添字 (Index)** と呼ばれ、**`0` から始まる連番** となっている。
+
+---
+
+**`for`** 文によるループを活用すれば、
+配列の**各要素**に対して **同じ処理を適用** させることができる。
 
 ```js
 for (let i = 0; i < 3; i++) {
-    alert(i);
+  alert( i + '番 ' + students[i] ); // 添字に i を指定
+  // '0番 Alice'
+  // '1番 Bob'
+  // '2番 Charles'
 }
 ```
 
 ---
 
-### `break` 文
-`while` か `for` 文内で **`break;`** と書かれた行にプログラムが到達すると、
-**実行中のループが強制的に終了する**。
+配列に **後から要素を追加** するには **`push()`** 関数を使う。
 
 ```js
-let i = 3;
-while (true) {
-    alert(i);
-    if (i == 0) { // i が 0 なら
-        break;    // ループを抜ける
-    }
-    i--; // i を 1 減らす
+students.push( 'David' ); // David を生徒に追加
+```
+
+`push()` 関数は **最後尾に要素を追加** するので、
+`students` 配列の内容は以下のようになる。
+
+```js
+['Alice', 'Bob', 'Charles', 'David']
+```
+
+---
+
+配列に **全部でいくつの要素が入っているか** は
+**`length`** プロパティで知ることができる。
+
+```js
+alert( '生徒は全部で' + students.length + '人います。' ); // '生徒は全部で4人います。'
+```
+
+```js
+for (let i = 0; i < students.length; i++) {
+  alert( i + '番 ' + students[i] ); // 添字に i を指定
+  // '0番 Alice'
+  // '1番 Bob'
+  // '2番 Charles'
+  // '3番 David'
 }
 ```
 
-この例文は、ループが回る度に変数 `i` が `1` ずつ減っていき、
-**`0` になると `break;` によってループが終了する**。
+---
+
+### 配列の応用例
+`06/rainbow-array.js`
+https://editor.p5js.org/amekusa/sketches/UMign2Qg4
+
+### 配列とオブジェクトの応用例
+`06/rainbow-array-2.js`
+https://editor.p5js.org/amekusa/sketches/OrVlqvNT7
 
 ---
 
-`while` と `break` を使った場合の**プログラムの流れ**を
-サンプルコードで確認しよう。
-https://editor.p5js.org/amekusa/sketches/fThVmGvza
+## 画像を読み込む
+p5.js において、画像は **オブジェクト** として取り扱う。
+**`loadImage()`** 関数に読み込みたい画像のパスを渡すと、
+**画像オブジェクト** が返り値として戻ってくる。
+
+```js
+let img; // 画像オブジェクトを入れる変数
+
+function preload() {
+  img = loadImage('画像ファイルへのパス');
+}
+```
+
+注意点として、このようなファイルの読み込み処理は
+必ず **`preload()`** 関数内で行う必要がある。
+
+`preload()` 関数は `setup()` 関数よりも先に実行される。
 
 ---
 
+読み込んだ画像オブジェクトを単純に表示するだけなら
+**`image()`** 関数を使えば良い。
+
+```js
+image(img, 0, 0);
+```
+
+第 1 引数に表示したい画像オブジェクト,
+第 2, 第 3 引数は表示したい位置 (X, Y) を渡す。
+
+---
+
+しかし、そのまま表示するだけではあまり面白くはない。
+読み込んだ**画像データを元に、複雑な処理**を施してみよう。
+
+---
+
+そもそも、画像データとはどのようなデータだろうか。
+
+デジタルデータとしての画像とは、
+**整列した画素（ピクセル）の集合** にほかならない。
+そして、ピクセルとは **RGB 値で表現される色** のデータである。
+
+つまり、デジタル画像とは **色の配列** なのだ。
+
+![bg opacity:0.15](assets/pixels.png)
+
+---
+
+**`loadImage()`** 関数から返ってくる画像オブジェクトも、
+内部の **プロパティ** に **配列として色のデータ** を保持している。
+
+この配列にアクセスするには、まず **`loadPixels()`** 関数を呼んでから
+**`get()`** 関数を呼べばよい。
+
+---
+
+```js
+img.loadPixels();
+let c = img.get(0, 0); // 位置(0, 0) の色を取得
+```
+
+**`get()`** 関数は **画像上の指定された位置の色** を取得し、
+オブジェクトとして返してくれる。(左上が 0, 0）
+
+---
+
+取得した **色オブジェクト** は
+**`fill()`** や **`stroke()`** などの関数に渡すことで
+**描画色** として利用することが可能だ。
+
+```js
+img.loadPixels();
+let c = img.get(0, 0);
+fill(c);
+circle(mouseX, mouseY, 10);
+```
+
+---
+
+サンプルコードを見てみよう。
+
+`06/ColorPicker/sketch.js`
+https://editor.p5js.org/amekusa/sketches/-iyVpSKwJ
+
+---
+
+**`for` 文を活用**したサンプルコードも用意した。
+
+`06/Pic-Cells/sketch.js`
+https://editor.p5js.org/amekusa/sketches/0XDQSWwub
+
+---
+
+## サウンドライブラリを使おう
+波形を解析してビジュアライザを作ってみよう
+
+---
+
+p5.js は **サウンド** を扱うことも可能だ。
+まずはサウンドファイルを読み込んで再生してみよう。
+
+```js
+let song; // サウンドオブジェクトを入れる変数
+
+function preload() {
+  song = loadSound('サウンドファイル');
+}
+```
+
+画像を読み込む際と流れは同じだが、
+`loadImage()` の替わりに、**`loadSound()`** 関数使う。
+
+ファイル形式は **`.mp3` を使うのが無難** だろう。
+
+---
+
+読み込んだサウンドオブジェクトを再生するには
+**`play()`** 関数を呼べばいい。
+
+```js
+function setup() {
+  createCanvas(400, 400);
+
+  // サウンド再生
+  song.play();
+}
+```
+
+停止は **`stop()`** で、
+一時停止は **`pause()`** 関数だ。
+
+---
+
+### サウンド波形を解析する
+やはり、ただ再生するだけではつまらないので
+**再生中のサウンドに反応** して見た目が変化するようなスケッチを書いてみよう。
+
+---
+
+我々が音を認識できるのは、
+音の発生源の **振動** が周囲の **空気に波** を作り、
+その波が耳の奥の **鼓膜を振動** させるからだ。
+
+また、その **振動の速さやリズム, 大きさ等** によって
+様々な種類の音を識別することができる。
+
+![bg opacity:0.3](assets/waves.png)
+
+---
+
+様々な振動のパターンが描く **波の形** を記録したのがサウンドファイルだ。
+我々はその波形を数学的に **解析** することで、
+その音に記録された **あらゆる詳細な情報** を取得することができる。
+
+その情報を **プログラムの動作にフィードバック** させれば、
+**音と一体となった** 面白いインタラクティブアートが創出できるかもしれない。
+
+---
+
+#### 音の大きさを取得する
+`06/MusicPlayer/sketch.js`
+https://editor.p5js.org/amekusa/sketches/-5YQoKdUJ
+
+#### 定位の移動, 波形の表示
+`06/MusicPlayer2/sketch.js`
+https://editor.p5js.org/amekusa/sketches/uCmyFkJ8F
+
+---
+
+## タイポグラフィ
+文字もアートの一部です。
+
+---
+
+p5.js はフォントを扱うこともできる。
+フォントファイルを読み込むには **`loadFont()`** 関数を使えばよい。
+
+```js
+let font; // フォントオブジェクトを入れる変数
+
+function preload() {
+    font = loadFont('フォントファイル');
+}
+```
+
+対応しているフォントのファイル形式は **`.ttf` か `.otf`** のみだ。
+
+まずはライセンスフリーのフォントで使いたいものを探してみよう。
+https://www.fontsquirrel.com/
+
+---
+
+読み込んだフォントオブジェクトを使用するには **`textFont()`** 関数を呼ぼう。
+
+```js
+textFont(font);
+text('Hello p5.js !');
+```
+
+`textFont()` 関数の引数にフォントオブジェクトを渡し、
+**`text()`** 関数で任意の文字列を描画する。
+
+---
+
+フォントオブジェクトの **`textToPoints()`** 関数は
+**テキストのアウトラインデータ** を取得する関数だ。
+アウトラインデータは **全ての頂点の位置** を示した **配列** だ。
+使い方についてはサンプルコードを参照していただきたい。
+
+`06/Typography/sketch.js`
+https://editor.p5js.org/amekusa/sketches/XcKPoUYOH
+
+---
+
+#### サンプル集 by 講師:相馬
+https://editor.p5js.org/amekusa/collections/9jwIe3hqu
+
+#### 参考書籍のコード
+http://www.bnn.co.jp/support/generativedesign_p5js/
