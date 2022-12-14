@@ -1,36 +1,50 @@
 @charset "utf-8";
 
-:root {
-  font-size: 1.75em;
-  font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
-  line-height: 1.75;
-}
-h2,h3 {
-  font-family: "Avenir Next", sans-serif;
-  line-height: 1.25;
-}
-em {
-  font-weight: bold;
-  font-style: normal;
-}
-strong {
-  background:linear-gradient(transparent 60%, #ff6 60%);
-}
+/* @theme custom */
 
-#cover {
-  .logo {
-    font-size: 64px;
-  }
-  .author {
-    text-align: right;
-    color: #0066;
-    font-weight: bold;
-    font-family: Optima;
+/* marp base styles */
+@import-theme "default";
+
+@fsS: 18pt;
+@fsM: 21pt;
+@fsL: 24pt;
+@fsXL: 27pt;
+@fsMax: 48pt;
+
+@ffFutura: Futura, "Century Gothic", sans-serif;
+@ffCode: Menlo, Monaco, "Courier New", monospace;
+
+@cBlack: #334;
+@cGrey: #aac;
+@cDkBlue: #246;
+
+@hl: 1.5pt; // hairline
+@gap: 1.5em;
+
+:root {
+  font-size: @fsM;
+  font-family: Helvetica, Arial, "Hiragino Kaku Gothic Pro", sans-serif;
+  line-height: 1.75;
+  color: @cBlack;
+
+  &.cover {
+    .logo {
+      font-size: @fsMax;
+    }
+    .title {
+      font-weight: bold;
+      font-size: @fsL;
+      color: @cDkBlue;
+    }
+    .author {
+      text-align: right;
+      color: #0066;
+    }
   }
 }
 
 .logo {
-  font-family: Futura, sans-serif;
+  font-family: @ffFutura;
   font-weight: normal !important;
   letter-spacing: .1em;
   padding: 0;
@@ -63,4 +77,124 @@ strong {
       0 -.75em 0 #0f66,
       0 -1.4em 0 #ff08;
   }
+}
+
+.red {
+  color: #b44;
+}
+.green {
+  color: #4b4;
+}
+.blue {
+  color: #44b;
+}
+
+.fl {
+  display: block;
+  margin: 0;
+  margin-bottom: @gap * .5;
+
+  &.l {
+    float: left;
+    margin-right: @gap;
+  }
+  &.r {
+    float: right;
+    margin-left: @gap;
+  }
+}
+
+h1,h2,h3 {
+  line-height: 1.25;
+}
+h1,h2 {
+  color: @cDkBlue;
+}
+h2 {
+  font-size: @fsXL;
+}
+h3 {
+  font-size: @fsL;
+}
+h4,h5,h6 {
+  font-size: @fsM;
+}
+
+small {
+  font-size: @fsS;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+
+  code {
+    color: #4f9;
+    font-weight: normal;
+  }
+}
+strong {
+  background:linear-gradient(transparent 60%, #0f66 60%);
+  
+  code {
+    color: #4f9;
+  }
+}
+
+ol {
+  li {
+    &::marker {
+      color: @cGrey;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      padding-right: .5em;
+    }
+  }
+}
+
+kbd {
+  background-color: @cBlack;
+  color: white;
+  font-family: @ffCode;
+  font-size: @fsM;
+  line-height: 1;
+  padding: .1em .3em;
+  border: .1em solid lighten(@cBlack, 50%);
+  border-radius: .3em;
+}
+
+table {
+  td, th {
+    border: @hl solid @cGrey;
+  }
+  thead {
+    td, th {
+      white-space: nowrap;
+    }
+  }
+  &.numtable {
+    font-family: @ffCode;
+  
+    td {
+      text-align: right;
+    }
+  }  
+}
+
+img {
+  background-color: transparent;
+}
+
+/* highlight.js theme */
+@import (less) "vs2015.css";
+
+:is(pre, marp-pre) {
+  .hljs;
+  border: none;
+  line-height: 1.5;
+}
+
+code {
+  .hljs;
+  font-family: @ffCode;
 }
