@@ -1,0 +1,27 @@
+{
+  "name": "art_of_code",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "marp",
+    "watch": "marp -w -s -p"
+  },
+  "marp": {
+    "html": true,
+    "lang": "ja",
+    "themeSet": ".theme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amekusa/art_of_code.git"
+  },
+  "author": "Satoshi Soma (https://github.com/amekusa)",
+  "license": "DO_NOT_STEAL",
+  "bugs": {
+    "url": "https://github.com/amekusa/art_of_code/issues"
+  },
+  "homepage": "https://github.com/amekusa/art_of_code#readme",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^2.2.2"
+  }
+}
