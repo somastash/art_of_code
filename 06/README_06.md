@@ -1,45 +1,17 @@
 ---
 marp: true
-theme: default
 paginate: true
+theme: custom
 ------
 
-<style>
-    :root {
-        font-size: 1.75em;
-        font-family: Helvetica, "Hiragino Kaku Gothic Pro", sans-serif;
-        line-height: 1.75;
-    }
-    h1,h2,h3 {
-        font-family:
-            "Avenir Next",
-            Futura,
-            sans-serif;
+<!-- _class: cover -->
 
-        line-height: 1.25;
-    }
-    p {
-        text-shadow: 2px 2px 0 white
-    }
-    section.right {
-        text-align: right;
-    }
-</style>
+<h1 class="logo">ART_OF_<b>CODE</b> #6</h1>
+<p class="title">p5.js で学ぶ JavaScript #6</p>
+<p class="author">&copy; 2022 Satoshi Soma</p>
 
-# ART_OF_CODE #6
-p5.js で学ぶ JavaScript
 
 ---
-
-<!-- class: right -->
-
-Satoshi Soma / 相馬 聡
-github.com/amekusa
-Dec. 22, 2021
-
----
-
-<!-- class: left -->
 
 ## 前回のおさらい 1/2
 
