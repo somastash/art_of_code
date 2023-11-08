@@ -13,12 +13,12 @@ style: @import "../.theme/style.css";
 
 ---
 
-### JavaScript とは、
-- プログラミング言語のひとつ
+## JavaScript とは
+JavaScript は数ある *プログラミング言語* のうちの一つ。
 
-HTML や CSS と同じ「人工言語」。
+HTML や CSS とは全く別の言語であり、
 HTML と CSS がそれぞれ **独自の文法規則** を持つように、
-JavaScript にも独自の文法規則が存在する。
+JavaScript にも独自の文法規則で成り立っている。
 
 頭文字をとって **JS** とも呼ばれる。
 
@@ -26,24 +26,47 @@ JavaScript にも独自の文法規則が存在する。
 
 ウェブサイトにおいて
 
-HTML は **文書構造**、
-CSS は **ページの装飾** を担うのに対し
+HTML は **文書構造の定義**、
+CSS は主に **ページの装飾** という役割を担うのに対し
 
-JS は ウェブページがユーザーの入力に対して、
-**より動的で柔軟な双方向性（インタラクション）**:thinking:
-を実現するために用いられる。
+JS は主にウェブページにおいて、
+**ユーザーの入力に応じた複雑な動作を実現するため** に用いられる。
 
 ---
 
 HTML と CSS だけでは実現できない複雑な機能は
-大抵 JavaScript によってつくられている。
+ほとんど場合 JavaScript によって実装されている。
 
 **JS を使っていないウェブサイトの方が珍しい**
 というほど今日のウェブにおいて一般的な技術であり、
 
-HTML, CSS, JS はウェブ（フロントエンド）を支える**三本の柱** といえる。
+HTML, CSS, JS はウェブ<small>（フロントエンド）</small>を支える**三本の柱** と言っても良いだろう。
 
-JS 実例: wikipedia.org, inverse.com, [apple.com](https://www.apple.com/iphone-13-pro/)
+---
+
+## JavaScript の活用事例をみてみよう
+
+### 商品プロモーションサイト
+- [iPhone 15 @ apple.com](https://www.apple.com/iphone-15/)
+- [マリオ @ nintendo.com](https://www.nintendo.com/jp/switch/aqmxa/index.html)
+
+いずれのサイトも商品の魅力を最大限伝えるため、
+*ダイナミックな動き*をふんだんに取り入れたページ構成となっている。
+
+**スクロールやホバーといったユーザーの入力に応じた複雑なインタラクション**を実現しているのは JavaScript の力に他ならない。
+
+---
+
+### ゲーム, アート系
+- [CrossCode クロスコード（ゲーム, 2D）](www.cross-code.com)
+  - Nintendo Switch などのコンソールにも移植されている、90 年代風アクション RPG。クリアに少なくとも 20 時間以上はかかる（実体験）壮大な規模のインディーゲーム。
+- [Friday Night Funkin（ゲーム, 2D）](https://ninja-muffin24.itch.io/funkin)
+  - 一時期流行したリズムゲーム。
+- [three.js（ライブラリ, 3D）](https://threejs.org/)
+- [Gamedev.js Jam 2023（ゲームコンテスト）](https://gamedevjs.com/jam/2023/)
+- [Elastic Man（アート, 3D）](https://www.adultswim.com/etcetera/elastic-man/)
+
+インディーゲーム界隈を中心に、*JS 製のゲームエンジン*が採用されることも珍しくなくなってきた。JS 製のゲームは [itch.io](https://itch.io/games/html5) で公開されているものも多い。興味が湧いたらチェックしてみよう。JS 製ゆえ *ブラウザ上で気軽に実行できる* という強みも大きい。
 
 ---
 
@@ -75,6 +98,58 @@ alert('Hello World!');
 
 ---
 
+### JS の基本文法 1:
+行の終わりには `;`<small>（セミコロン）</small>をつける。
+
+> 実は `;` を省いてもいいのだが、そこには思わぬ落とし穴が存在するので、
+初心者は必ず `;` をつけることを私は推奨する。
+
+英語が文の終わりに `.`（ピリオド）を、
+日本語が `。`（句点）をつけるように、
+JS は `;` をつけるのだ。
+
+---
+
+### JS の基本文法 2:
+`//`（ダブルスラッシュ）は *コメント行* 。
+*`//` より右側の文字列* はコメント扱いとなり、*実行されることがない*。
+ゆえに何を書いてもエラーになる心配もない。
+
+```js
+// コメント
+alert('Hello World'); // アラート関数の呼び出し
+```
+
+HTML における `<!-- -->` と同じ役割と捉えてよい。
+自分のコードに小まめにコメントを残す癖をつけよう。
+
+---
+
+複数行にわたるコメントを残したい時は
+`/*` と `*/` を用いる。
+
+*`/*` と `*/` に囲まれている文字列* は、**行を跨いでいてもコメント扱い**となる。
+
+```js
+/* コメント開始
+コメント
+コメント
+コメント
+コメント終了 */
+```
+
+---
+
+### JS の基本文法 3:
+JS は *上の行から下の行に向かって順番に実行* される。
+
+```js
+alert('Hello'); // 最初
+alert('World'); // 次
+```
+
+---
+
 ### 演習 #2:
 1. `01` フォルダの `math.html` をブラウザと VSCode で開く。
 2. `math.html` の **`<body>` タグ内の最後の行に `<script>` タグを記述** し、
@@ -84,32 +159,12 @@ alert('Hello World!');
 
 ---
 
-# 進化するウェブと JS の活用事例
-技術は需要があるからこそ進化する。
-
-- 昔はイケてなかった JS
-- Google や Facebook, Twitter の台頭
-- Google による YouTube 買収
-- Google 開発による、すごく速い JS 実行エンジン、**V8**
-- WebGL により 3D コンテンツがブラウザで動くように
-
----
-
-### インタラクティブアート:
-- [Elastic Man (WebGL)](https://www.adultswim.com/etcetera/elastic-man/)
-
-### ゲーム
-- [Cross Code (ImpactJS)](http://www.cross-code.com/en/home)
-- [Tanuki Sunset (Unity)](https://v6p9d9t4.ssl.hwcdn.net/html/1756009/WebGL/index.html?v=1574334742)
-
----
-
 # プログラミングでアートする
 技術（Tech）と 芸術（Art）
 
 ---
 
-### 技術によって創出されるアートたち
+### 技術によって創出されるアート
 
 - [ライゾマティクスのインスタレーション](https://rhizomatiks.com/work/)
 - [フラクタルアート](https://www.youtube.com/results?search_query=fractal+art)
