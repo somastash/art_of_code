@@ -231,7 +231,7 @@ x++;       // 1 増やす（インクリメント）
 - 以下のように記述して呼び出す:
 
 ```js
-関数名();          // パラメタ無しの場合
+関数名();         // パラメタ無しの場合
 関数名(パラメタ);   // パラメタ有りの場合
 ```
 
@@ -243,7 +243,7 @@ x++;       // 1 増やす（インクリメント）
 |:------|:----|:---------|
 | alert | ポップアップを表示する。 | `alert('Hello');` |
 | circle | 円を描画する。 | `circle(10, 20, 30);` |
-| text | 文字列を描画する。 | `text('Hello');` |
+| text | 文字列を描画する。 | `text('Hello', 10, 20);` |
 | textSize | text のサイズを指定する。 | `textSize(10);` |
 
 ---
@@ -270,8 +270,11 @@ p5.js には `circle` や `text` 以外にも様々な関数が存在する。
 以下のリンクで日本語化されたリファレンスが参照できるので、
 **変数も活用しつつ**、自分なりのスケッチを作成してみよう。
 
-https://qiita.com/bit0101/items/91818244dc26c767a0fe
+> https://qiita.com/bit0101/items/91818244dc26c767a0fe
 https://processing-fan.firebaseapp.com/refer.html
+
+英語でも問題ないという人は公式のリファレンスをお勧めする。
+> https://p5js.org/reference/
 
 ---
 
@@ -296,6 +299,7 @@ function 関数名() {
 }
 ```
 
+オリジナルの関数なので `関数名` は*自由*だ<small>（半角英数）</small>。
 `仕事の内容` にはこれまで通り、普通に JS コードを書く。
 ただし、**その関数を呼び出さない限り、その内容も実行されることはない。**
 
@@ -311,20 +315,22 @@ function 関数名() {
 ---
 
 関数から別の関数を実行することも可能だ。
-例として、関数 `hello` を定義し、そこから `alert` 関数を呼び出してみよう。
+例として、関数 `greet` を定義し、そこから `text` 関数を呼び出してみよう。
 
 ```js
-// 関数:hello の定義
-function hello() {
-    let msg = 'こんにちは'; // 変数:msg に 'こんにちは' を格納
-    alert(msg);           // alert 関数に msg を渡す
+// 関数:greet の定義
+function greet() {
+  let msg = 'Hello!';  // 変数:msg に 'Hello!' を格納
+  text(msg, 100, 150); // text 関数に msg を渡す
 }
 ```
 
-定義した関数 `hello` を実行する。
+定義した関数 `greet` を `draw` 関数の中で実行してみよう。
 
 ```js
-hello();
+function draw() {
+  greet();
+}
 ```
 
 ---
@@ -335,11 +341,11 @@ hello();
 パラメタは `()` の中に記述する。
 
 ```js
-// 関数:greet   引数:name
+// 関数名:greet 引数:name
 function greet(name) {
-    let msg = 'こんにちは、'; // 変数:msg に 'こんにちは、' を格納
-    msg = msg + name;       // msg の後ろに 引数:name をくっつける
-    alert(msg);             // alert 関数に msg を渡す
+  let msg = 'Hello, '; // 変数:msg に 'Hello, ' を格納
+  msg = msg + name;    // msg の後ろに 引数:name を結合
+  text(msg, 100, 150); // text 関数に msg を渡す
 }
 ```
 
@@ -357,6 +363,11 @@ greet('花子'); // 引数:name に '花子' を渡す
 ```
 
 `greet` 関数内の `name` が、**渡した文字列に置き換わって**実行されるはずだ。
+
+---
+
+`smiley.js` を p5.js エディタで実行してみよう。
+また、コードを自由に改変してみよう。
 
 ---
 
