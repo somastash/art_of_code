@@ -338,79 +338,77 @@ text = text + <span class="hljs-string">&#x27;持っている。&#x27;</span>; <
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
 <h2 id="for-%E3%83%AB%E3%83%BC%E3%83%97"><code>for</code> ループ</h2>
-<p><strong><code>for</code> ループ</strong> は、特定の処理を <strong>決められた回数だけ</strong> 実行させたい時に便利な構文だ。</p>
+<p><strong><code>for</code> ループ</strong> は、特定の処理を <strong>決められた回数だけ</strong> 実行させたい際に有用な構文だ。</p>
 <h4 id="%E6%9B%B8%E3%81%8D%E6%96%B9">書き方:</h4>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; ループ回数; i++) {
-
-    <span class="hljs-comment">// 実行したい処理</span>
-
+  <span class="hljs-comment">// 実行したい処理</span>
 }
 </code></pre>
+<p><code>ループ回数</code> に <code>100</code> と入れれば、<code>{ }</code> 内に書いたコードが 100 回実行される。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
 <h3 id="for-%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AE%E4%B8%AD%E3%81%A7%E3%81%AF%E4%BD%95%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%A6%E3%81%84%E3%82%8B"><code>for</code> ループの中では何が起きている？</h3>
-<p><code>for</code> の右の <code>()</code> の中に注目してほしい。<br />
-プログラムが <code>for</code> の行に到達すると、</p>
-<ol>
-<li><strong>変数 <code>i</code></strong> が宣言される。初期値は <code>0</code> 。</li>
-</ol>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+<p><code>for</code> の右の <code>( )</code> の中に注目してほしい。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
 </code></pre>
-<ol start="2">
-<li>変数 <code>i</code> が <strong><code>ループ回数</code> より小さいか否か</strong> の <strong>条件判定</strong> が行われる。</li>
-</ol>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i &lt; ループ回数;
+<p>この <code>( )</code> の中身は <code>;</code><small>（セミコロン）</small>を挟んで、以下の <strong>3 つのパート</strong> に分けられる。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>  <span class="hljs-comment">// 左</span>
+</code></pre>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i &lt; <span class="hljs-number">100</span>    <span class="hljs-comment">// 中央</span>
+</code></pre>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i++        <span class="hljs-comment">// 右</span>
 </code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="32" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
-<ol start="3">
-<li>
-<p>そして、<strong>2 の条件に合致した場合のみ</strong> <code>{ }</code> 内の処理が実行される。</p>
-</li>
-<li>
-<p><code>{ }</code> の実行が終わると、<strong>変数 <code>i</code> に +1</strong> 加算される。</p>
-</li>
-</ol>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i++
+<p>プログラムが <code>for</code> の行に到達すると、<em>最初に左のパートが一回だけ実行</em>される。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>  <span class="hljs-comment">// 左: 変数 i の宣言</span>
 </code></pre>
-<ol start="5">
-<li>ふたたび <strong>2 の条件判定</strong> が行われる。</li>
-</ol>
+<p>中央は <em>条件式</em> で、<strong>ループを継続するか否かの条件判定</strong> を行っている。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i &lt; <span class="hljs-number">100</span>    <span class="hljs-comment">// 中央: i が 100 より小さければループ継続</span>
+</code></pre>
+<p>右は <strong>ループ毎に一回実行</strong> される。</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js">i++        <span class="hljs-comment">// 右: i を 1 増やす</span>
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
-<p><code>for</code> ループは上記の 1 から 5 までの流れを、<br />
-変数 <code>i</code> の値が、 <strong><code>ループ回数</code> 以上</strong> になるまで繰り返す。<br />
-この変数 <code>i</code> のことを <strong>ループカウンター</strong> と呼ぶ。（ループの回数を数える変数）</p>
-<p>まとめると、</p>
+<p>変数 <code>i</code> は <strong>ループ回数を数えるための変数</strong> でループカウンターと呼ぶ。<br />
+ループを実行する度に <code>i</code> は 1 増えてゆき、<br />
+100<small>（ループ回数）</small>に到達した時、条件式が <em>偽 (False)</em> になるため、<br />
+そこでループは終了する。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="34" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
+<p>まとめると、</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">手順</th>
+<th style="text-align:center">実行順</th>
 <th style="text-align:left">内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">1.</td>
-<td style="text-align:left">ループカウンタの宣言</td>
+<td style="text-align:left"><code>for</code> の行に到達</td>
 </tr>
 <tr>
 <td style="text-align:center">2.</td>
-<td style="text-align:left">条件判定（条件に合致しなければ <code>for</code> 文を終了する）</td>
+<td style="text-align:left"><small>左のパート:</small> ループカウンタの宣言</td>
 </tr>
 <tr>
 <td style="text-align:center">3.</td>
-<td style="text-align:left"><code>{ }</code> の処理の実行</td>
+<td style="text-align:left"><small>中央パート:</small> 条件判定（条件に合致しなければ <code>for</code> 文を終了する）</td>
 </tr>
 <tr>
 <td style="text-align:center">4.</td>
-<td style="text-align:left">ループカウンタに +1</td>
+<td style="text-align:left"><code>{ }</code> 内の処理の実行</td>
 </tr>
 <tr>
 <td style="text-align:center">5.</td>
-<td style="text-align:left">2 に戻る</td>
+<td style="text-align:left"><small>右のパート:</small> ループカウンタに +1</td>
+</tr>
+<tr>
+<td style="text-align:center">6.</td>
+<td style="text-align:left">3. に戻る</td>
 </tr>
 </tbody>
 </table>
@@ -418,10 +416,9 @@ text = text + <span class="hljs-string">&#x27;持っている。&#x27;</span>; <
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="35" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
 <p>ちなみに、<br />
 ループカウンターの変数名が <strong><code>i</code></strong> である必要は<strong>特にない</strong>。<br />
-ただの変数名なので<strong>何でもいい</strong>。</p>
-<p>しかし<strong>慣習的</strong>に <code>i</code> が使われることが多い。<br />
-何故 <code>i</code> なのかというと、<br />
-<strong>iterator（イテレーター, 反復子）</strong> の頭文字からとっているから。</p>
+ただの変数名なので実は<strong>何でもいい</strong>。</p>
+<p>とはいえ<strong>慣習的</strong>に <code>i</code> が使われることが多い。何故 <code>i</code> なのかというと、<br />
+<strong>iterator（イテレーター, 反復子）</strong> の頭文字に由来する。</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="custom" lang="en-US" data-marpit-pagination="36" style="--paginate:true;--theme:custom;" data-marpit-pagination-total="37">
 <h3 id="%E6%BC%94%E7%BF%92-1">演習:</h3>
