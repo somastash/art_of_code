@@ -8,7 +8,7 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b> #4</h1>
 <p class="title">p5.js で学ぶ JavaScript #4</p>
-<p class="author">&copy; 2022 Satoshi Soma</p>
+<p class="author">&copy; 2023 Satoshi Soma</p>
 
 ---
 
@@ -251,9 +251,9 @@ https://editor.p5js.org/amekusa/sketches/3YAjHkOI-
 
 ```js
 let apple = {
-    color:  'red', // 色
-    size:   11,    // 大きさ (cm)
-    weight: 400    // 重さ (g)
+  color:  'red', // 色
+  size:   11,    // 大きさ (cm)
+  weight: 400    // 重さ (g)
 };
 ```
 
@@ -268,15 +268,15 @@ let apple = {
 ```js
 // オブジェクト: プレイヤーキャラクター
 let player = {
-    name: 'John',  // 名前
-    sex:  'male',  // 性別
-    lv:     30,    // レベル
-    exp:  1024,    // 経験値
+  name: 'John',  // 名前
+  sex:  'male',  // 性別
+  lv:     30,    // レベル
+  exp:  1024,    // 経験値
 
-    hp:    128,    // 体力
-    str:    99,    // ちから
-    agl:     8,    // 素早さ
-    fth:    99,    // 信仰心
+  hp:    128,    // 体力
+  str:    99,    // ちから
+  agl:     8,    // 素早さ
+  fth:    99,    // 信仰心
 };
 ```
 
@@ -293,6 +293,7 @@ let size = 50; // 円の直径
 ```
 
 このように *複数の変数* を使用してきたが、
+オブジェクトを利用することで...
 
 ```js
 // 円オブジェクト
@@ -369,7 +370,7 @@ ball.y = 20;    // プロパティ y を追加
 
 ---
 
-## 配列 (array)
+# 配列 (array)
 
 ---
 
@@ -384,15 +385,58 @@ ball.y = 20;    // プロパティ y を追加
 もし同じ方法で **3 個目のボール**が欲しくなったら、
 我々はさらに **変数 `ballC`** を用意しなくてはならない。
 
-だが ***“Do Not Repeat Yourself”*** の原則に立ち返るならば、
+だが *“Don't Repeat Yourself”* の原則に立ち返るならば、
 これは美しい解決方法とは言えない。
 
 そこで **配列 (array)** の出番となる。
 
 ---
 
-JavaScript における配列とは **特殊なオブジェクトの一種**で、
+配列とは *特殊なオブジェクトの一種*で、
 **複数の値を、それぞれに番号を振って格納, 管理**することのできる構造体である。
+
+---
+
+*貨物列車* をイメージしてほしい。
+先頭の貨物は `0` 番で、その次は `1` 番, その次は `2` 番... という具合に、
+**各貨物には連番が振られている。**
+<figure>
+<div class="array">
+  配列
+  <div class="item a">0番: 値A</div>
+  <div class="item b">1番: 値B</div>
+  <div class="item c">2番: 値C</div>
+</div>
+<style scoped>
+.array {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  /* background: hsl(40, 80%, 90%); */
+  border: 1px dashed #0008;
+  font-family: Menlo, Monaco, monospace;
+}
+.item {
+  padding: .5em 1em;
+}
+.item.a {
+  background: hsl(0, 90%, 80%);
+}
+.item.b {
+  background: hsl(90, 90%, 80%);
+}
+.item.c {
+  background: hsl(180, 90%, 80%);
+}
+</style>
+<figure>
+
+そして、各貨物には一つづつ **値** を入れることができる。
+貨物はそれぞれが **変数** のようなものだとも言える。
+
+変数との違いは、**名前ではなく番号でアクセスする** という点だ。
 
 ---
 
@@ -413,7 +457,8 @@ let list = ['Alice', 'Bob', 'Charles'];
 
 ---
 
-配列に格納されている一つ一つの値を **要素 (element)** と呼び、
+先ほどは "貨物" と例えたが、
+配列に格納されている一つ一つの値は、正式には **要素 (element)** と呼び、
 **番号を指定** してそれぞれの要素にアクセスすることができる。
 
 ```js
@@ -432,24 +477,31 @@ alert( list[2] ); // "Charles"
 
 ```js
 // NATO フォネティックコード
-let codes = [
-    'Alfa',
-    'Bravo',
-    'Charlie',
+let list = [
+  'Alfa',
+  'Bravo',
+  'Charlie',
 
-    'Delta',
-    'Echo',
-    'Foxtrot'
+  'Delta',
+  'Echo',
+  'Foxtrot'
 ];
 ```
 
 ---
 
-また、配列に**後から要素を追加**することも可能だ。
+配列に**後から要素を追加**することも可能だ。
 **`push()` 関数**を使うと、**配列の最後尾**に新しい要素を追加できる。
 
 ```js
-codes.push('Golf'); // Foxtrot の次
+list.push('Golf'); // Foxtrot の次
+```
+
+また、**`length` プロパティ** を参照することで、
+*その配列内の要素の総数* を知ることもできる。
+
+```js
+alert( list.length ); // 7
 ```
 
 ---
