@@ -8,7 +8,7 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b> #5</h1>
 <p class="title">p5.js で学ぶ JavaScript #5</p>
-<p class="author">&copy; 2022 Satoshi Soma</p>
+<p class="author">&copy; 2023 Satoshi Soma</p>
 
 ---
 
@@ -87,7 +87,7 @@ https://editor.p5js.org/amekusa/sketches/3YAjHkOI-
 let apple = {
   color:   'red'  // 色
   size:    11,    // 大きさ
-  weight:  474.9, // 重さ
+  weight:  400,   // 重さ
 };
 ```
 
@@ -151,6 +151,39 @@ alert( students[2] ); // Charles
 
 この番号は **添字 (Index)** と呼ばれ、**`0` から始まる連番** となっている。
 
+<figure>
+<div class="array">
+  students
+  <div class="item a">[0] Alice</div>
+  <div class="item b">[1] Bob</div>
+  <div class="item c">[2] Charles</div>
+</div>
+<style scoped>
+.array {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  /* background: hsl(40, 80%, 90%); */
+  border: 1px dashed #0008;
+  font-family: Menlo, Monaco, monospace;
+}
+.item {
+  padding: .5em 1em;
+}
+.item.a {
+  background: hsl(0, 90%, 80%);
+}
+.item.b {
+  background: hsl(90, 90%, 80%);
+}
+.item.c {
+  background: hsl(180, 90%, 80%);
+}
+</style>
+<figure>
+
 ---
 
 **`for`** 文によるループを活用すれば、
@@ -202,12 +235,16 @@ for (let i = 0; i < students.length; i++) {
 ---
 
 ### 配列の応用例
-`06/rainbow-array.js`
+`05/rainbow-array.js`
 https://editor.p5js.org/amekusa/sketches/UMign2Qg4
 
 ### 配列とオブジェクトの応用例
-`06/rainbow-array-2.js`
+`05/rainbow-array-2.js`
 https://editor.p5js.org/amekusa/sketches/OrVlqvNT7
+
+---
+
+# 外部ファイルを読み込む
 
 ---
 
@@ -224,8 +261,8 @@ function preload() {
 }
 ```
 
-注意点として、このようなファイルの読み込み処理は
-必ず **`preload()`** 関数内で行う必要がある。
+注意点として、このような外部ファイルの読み込み処理は
+必ず **`preload()` 関数内で行う**必要がある。
 
 `preload()` 関数は `setup()` 関数よりも先に実行される。
 
@@ -235,7 +272,7 @@ function preload() {
 **`image()`** 関数を使えば良い。
 
 ```js
-image(img, 0, 0);
+image(img, 10, 20); // img を 座標:(10, 20) に表示
 ```
 
 第 1 引数に表示したい画像オブジェクト,
@@ -243,7 +280,31 @@ image(img, 0, 0);
 
 ---
 
-しかし、そのまま表示するだけではあまり面白くはない。
+`image()` 関数はさらに詳細な引数の指定が可能だ。
+
+```js
+image(img,  x, y,  w, h,  dx, dy,  dw, dh);
+```
+
+| 引数 | 意味 |
+|:----|:----|
+| `x`, `y` | 表示位置 |
+| `w`, `h` | 表示サイズ |
+| `dx`, `dy` | 画像切り取り始点 |
+| `dw`, `dh` | 画像切り取り幅, 高さ |
+
+---
+
+### サンプルコード
+`image()` 関数を使って簡単な *アニメーション* を実装してみたので、
+参考にしていただきたい。
+
+`05/WalkingKirby`
+https://editor.p5js.org/amekusa/sketches/tUNf8Mhev
+
+---
+
+今度は画像をそのまま表示するのではなく、
 読み込んだ**画像データを元に、複雑な処理**を施してみよう。
 
 ---
@@ -254,7 +315,14 @@ image(img, 0, 0);
 **整列した画素（ピクセル）の集合** にほかならない。
 そして、ピクセルとは **RGB 値で表現される色** のデータである。
 
-つまり、デジタル画像とは **色の配列** なのだ。
+つまり、デジタル画像とは **色の集合** なのだ。
+
+![bg opacity:0.15](assets/pixels.png)
+
+---
+
+プログラムにおいて **集合<small>（複数のモノの集まり）</small>** を扱いたい場合は、
+**配列** を用いるのが手っ取り早い。
 
 ![bg opacity:0.15](assets/pixels.png)
 
@@ -263,8 +331,8 @@ image(img, 0, 0);
 **`loadImage()`** 関数から返ってくる画像オブジェクトも、
 内部の **プロパティ** に **配列として色のデータ** を保持している。
 
-この配列にアクセスするには、まず **`loadPixels()`** 関数を呼んでから
-**`get()`** 関数を呼べばよい。
+この配列にアクセスするには、まず **`img.loadPixels()`** 関数を呼んでから
+**`img.get()`** 関数を呼べばよい。
 
 ---
 
@@ -273,7 +341,7 @@ img.loadPixels();
 let c = img.get(0, 0); // 位置(0, 0) の色を取得
 ```
 
-**`get()`** 関数は **画像上の指定された位置の色** を取得し、
+**`img.get()`** 関数は **画像上の指定された位置の色** を取得し、
 オブジェクトとして返してくれる。(左上が 0, 0）
 
 ---
@@ -285,22 +353,39 @@ let c = img.get(0, 0); // 位置(0, 0) の色を取得
 ```js
 img.loadPixels();
 let c = img.get(0, 0);
-fill(c);
-circle(mouseX, mouseY, 10);
+
+fill(c); // 塗りの色を c の値に設定
+circle(mouseX, mouseY, 10); // 円描画
 ```
 
 ---
 
 サンプルコードを見てみよう。
 
-`06/ColorPicker/sketch.js`
+`05/ColorPicker/sketch.js`
 https://editor.p5js.org/amekusa/sketches/-iyVpSKwJ
+
+---
+
+画像の *幅と高さ* が知りたい場合は、
+**`img.width`** と **`img.height`** プロパティで取得できる。
+
+これらを `for` 文と組み合わせると、**画像全体をピクセル単位で精査<small>（スキャン）</small>** し、
+その情報を元に一風変わったエフェクトで画像を表示することができる。
+
+---
+
+参考として、8x8 の小さな画像を `for` 文でスキャンし、
+**各ピクセルを円に置き換えて描画する** スケッチを用意した。
+
+`05/PixelKirby/sketch.js`
+https://editor.p5js.org/amekusa/sketches/1_XSnQ1iC
 
 ---
 
 **`for` 文を活用**したサンプルコードも用意した。
 
-`06/Pic-Cells/sketch.js`
+`05/Pic-Cells/sketch.js`
 https://editor.p5js.org/amekusa/sketches/0XDQSWwub
 
 ---
