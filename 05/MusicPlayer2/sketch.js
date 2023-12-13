@@ -15,14 +15,14 @@ function setup() {
   analyzer = new p5.Amplitude();
   analyzer.setInput(song); // 解析対象を指定
   analyzer.smooth(0.5);
-  
+
   // フーリエ変換ライブラリを準備
   fft = new p5.FFT();
   fft.setInput(song); // 解析対象を指定
 }
 
 function draw() {
-  
+
   // 背景
   fill('rgba(0, 0, 0, 0.2)');
   noStroke();

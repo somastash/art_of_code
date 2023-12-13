@@ -254,7 +254,7 @@ p5.js において、画像は **オブジェクト** として取り扱う。
 **画像オブジェクト** が返り値として戻ってくる。
 
 ```js
-let img; // 画像オブジェクトを入れる変数
+let img; // 画像オブジェクトを入れる変数（変数名は自由）
 
 function preload() {
   img = loadImage('画像ファイルへのパス');
@@ -383,10 +383,18 @@ https://editor.p5js.org/amekusa/sketches/1_XSnQ1iC
 
 ---
 
-**`for` 文を活用**したサンプルコードも用意した。
+`for` 文と配列, オブジェクトを活用したサンプルコードも用意した。
+**各ピクセルをオブジェクトに変換**している点に注目してもらいたい。
+
+二つめのサンプルは、それらオブジェクトに**独立した挙動**を持たせ、
+*群体アニメーション* のような動きを実現している。
+
 
 `05/Pic-Cells/sketch.js`
 https://editor.p5js.org/amekusa/sketches/0XDQSWwub
+
+`05/Pic-Cells2/sketch.js`
+https://editor.p5js.org/amekusa/sketches/AbSwnPIGp
 
 ---
 
@@ -399,10 +407,10 @@ p5.js は **サウンド** を扱うことも可能だ。
 まずはサウンドファイルを読み込んで再生してみよう。
 
 ```js
-let song; // サウンドオブジェクトを入れる変数
+let snd; // サウンドオブジェクトを入れる変数（変数名は自由）
 
 function preload() {
-  song = loadSound('サウンドファイル');
+  snd = loadSound('サウンドファイル');
 }
 ```
 
@@ -414,28 +422,56 @@ function preload() {
 ---
 
 読み込んだサウンドオブジェクトを再生するには
-**`play()`** 関数を呼べばいい。
+**`snd.play()`** 関数を呼べばいい。
 
 ```js
 function setup() {
   createCanvas(400, 400);
 
   // サウンド再生
-  song.play();
+  snd.play();
 }
 ```
 
-停止は **`stop()`** で、
-一時停止は **`pause()`** 関数だ。
+再生をやめるには **`snd.stop()`** 、
+一時停止は **`snd.pause()`** 関数だ。
 
 ---
 
-### サウンド波形を解析する
-やはり、ただ再生するだけではつまらないので
+`snd.play()` 関数は、
+引数を与えることで *再生速度* や *音量* などを変えることもできる。
+
+例:
+```js
+snd.play(
+  0,  // 再生までのディレイ（秒）
+  1,  // 再生速度
+  1,  // 音量
+  0,  // 再生開始時間（秒）
+  2   // 再生時間（秒）
+);
+```
+
+---
+
+身の回りの環境音を録音して、*効果音* として使ってみるのもよいだろう。
+
+### サンプルコード
+sound-effect
+https://editor.p5js.org/amekusa/sketches/76cypcHJd
+
+`05/King-Kong-Kung/sketch.js`
+https://editor.p5js.org/amekusa/sketches/ZzGm48DHc
+
+---
+
+## サウンド波形を解析する
+ただ再生するだけではなく、
 **再生中のサウンドに反応** して見た目が変化するようなスケッチを書いてみよう。
 
 ---
 
+### 音
 我々が音を認識できるのは、
 音の発生源の **振動** が周囲の **空気に波** を作り、
 その波が耳の奥の **鼓膜を振動** させるからだ。
@@ -454,20 +490,69 @@ function setup() {
 その情報を **プログラムの動作にフィードバック** させれば、
 **音と一体となった** 面白いインタラクティブアートが創出できるかもしれない。
 
+![bg opacity:0.3](assets/waves.png)
+
 ---
 
-#### 音の大きさを取得する
-`06/MusicPlayer/sketch.js`
+#### 音圧を取得する
+`05/MusicPlayer/sketch.js`
 https://editor.p5js.org/amekusa/sketches/-5YQoKdUJ
 
 #### 定位の移動, 波形の表示
-`06/MusicPlayer2/sketch.js`
+`05/MusicPlayer2/sketch.js`
 https://editor.p5js.org/amekusa/sketches/uCmyFkJ8F
 
 ---
 
+## マイク入力を取得する
+PC のマイク入力を取得するには、まず以下のような手順が必要となる。
+
+```js
+let mic;
+
+function setup() {
+  let canvas = createCanvas(400, 400);
+  // クリックしたらマイク使用許可
+  canvas.mousePressed(userStartAudio);
+  // マイクオブジェクトを生成, 変数に格納
+  mic = new p5.AudioIn();
+  // マイク起動
+  mic.start();
+}
+```
+
+---
+
+あとは `mic.getLevel()` 関数でマイクの現在の **入力レベル** が取得できる。
+入力レベルは `0.0` から `1.0` までの数値だ。
+
+```js
+function draw() {
+  let level = mic.getLevel();
+}
+```
+
+これを利用し、
+**環境音に反応して何かが起こる** スケッチを描いてみてはいかがだろうか。
+
+---
+
+サンプル: Laughing Wave
+https://editor.p5js.org/amekusa/sketches/tKPJc8sBx
+
+---
+
+サウンドのプログラミングは奥が深く、当講義で全てを網羅することはできない。
+しかし、当講座で紹介した方法だけでも**アイディア次第**で多くの可能性を見出せるはず。
+
+興味が湧いたのなら、
+p5.js のサウンドライブラリのリファレンスに目を通すことをお勧めする。
+https://p5js.org/reference/#/libraries/p5.sound
+
+
+---
+
 ## タイポグラフィ
-文字もアートの一部です。
 
 ---
 
@@ -506,7 +591,7 @@ text('Hello p5.js !');
 アウトラインデータは **全ての頂点の位置** を示した **配列** だ。
 使い方についてはサンプルコードを参照していただきたい。
 
-`06/Typography/sketch.js`
+`05/Typography/sketch.js`
 https://editor.p5js.org/amekusa/sketches/XcKPoUYOH
 
 ---
