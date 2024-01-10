@@ -39,7 +39,7 @@ function setup() {
       };
     }
   }).filter(l => l);
-  echo(lyrics);
+  echo('lyrics:', lyrics);
 }
 
 function draw() {
