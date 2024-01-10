@@ -56,14 +56,20 @@ function draw() {
     song.jump(); // 再生ポイントを最初に戻す
   }
 
+  if (isPressed(LEFT_ARROW)) {
+    song.jump(max(song.currentTime() - 1, 0));
+  }
+
+  if (isPressed(RIGHT_ARROW)) {
+    song.jump(min(song.currentTime() + 10, song.duration() - 1));
+  }
+
   keys.length = 0;
 }
 
 function play() {
-  // 背景
-  noStroke();
-  fill(color(0, 0, 0, 50));
-  rect(0, 0, w, h);
+  let now = song.currentTime();
+  let end = song.duration();
 
   // 現在の RMS 値を取得
   let rms = amp.getLevel();
@@ -78,6 +84,11 @@ function play() {
   // let spectrMax = 512;
   // let spectrMax = 1024; // 一番細かい
   let spectr = fft.analyze(spectrMax);
+
+  // 背景
+  noStroke();
+  fill(color(0, 0, 0, 50));
+  rect(0, 0, w, h);
 
   // スペクトル波形描画
   push();
@@ -112,16 +123,15 @@ function play() {
   for (let i = 0; i < lyrics.length; i++) {
     let l = lyrics[i];
     if (!l) continue;
-    if (l.start <= song.currentTime() && song.currentTime() <= l.end) {
+    if (l.start <= now && now <= l.end) {
       text(l.line, 0, 0);
     }
   }
   pop();
 
   debug({
-    duration: ceil(song.duration() * 100) / 100 + ' s',
-    currentTime: ceil(song.currentTime() * 100) / 100 + ' s',
-    spectr: spectr.length,
+    end: ceil(end * 100) / 100 + ' s',
+    now: ceil(now * 100) / 100 + ' s',
   }, 10, 100);
 
   debug({
