@@ -3,10 +3,11 @@
  * @author Satoshi Soma
  */
 
+// キャンバスサイズ
 let w = 1024;
 let h = 400;
 
-let keys = [];
+let keys = []; // 押されたキーを入れる配列
 
 let song;   // サウンドオブジェクト
 let lyrics; // 歌詞
@@ -14,14 +15,27 @@ let lyrics; // 歌詞
 let amp; // 振幅解析機
 let fft; // 波形解析機
 
+
+///////////////////////////
 // ファイル読み込み
 function preload() {
   song = loadSound('assets/Pretty by HOAX.mp3');
   lyrics = loadStrings('assets/Pretty by HOAX.txt');
 }
 
+
+////////////////////////////////
+// 最初に一回実行される（初期化処理）
 function setup() {
   createCanvas(w, h);
+
+  // -------- 描画基本設定 --------
+  // 角度の指定方法を 0 ~ 360度に
+  angleMode(DEGREES);
+
+  // 色指定方法を HSL にする。各値の最大値は 100 に
+  colorMode(HSL, 100);
+  // ============================
 
   song.setVolume(0.5); // 音の大きさ (0.0 ~ 1.0)
 
@@ -47,36 +61,42 @@ function setup() {
   echo('lyrics:', lyrics);
 }
 
+
+/////////////////////////////////
+// 毎フレーム実行される（メインループ）
 function draw() {
-  if (song.isPlaying()) {
+  if (song.isPlaying()) { // 曲が再生中なら
     play();
   }
 
-  if (isPressed(32)) { // SPACE
+  if (isPressed(32)) { // SPACE が押されたら
     if (song.isPlaying()) song.pause(); // 再生されていたらポーズ
     else song.play();                   // 再生されていなければ再生
   }
 
-  if (isPressed(13)) { // ENTER
+  if (isPressed(13)) { // ENTER が押されたら
     song.jump(); // 再生ポイントを最初に戻す
   }
 
-  if (isPressed(LEFT_ARROW)) {
-    song.jump(max(song.currentTime() - 1, 0));
+  if (isPressed(LEFT_ARROW)) { // 左が押されたら
+    song.jump(max(song.currentTime() - 1, 0)); // 再生ポイントを 1 秒戻す
   }
 
-  if (isPressed(RIGHT_ARROW)) {
-    song.jump(min(song.currentTime() + 10, song.duration() - 1));
+  if (isPressed(RIGHT_ARROW)) { // 右が押されたら
+    song.jump(min(song.currentTime() + 10, song.duration() - 1)); // 再生ポイントを 10 秒進める
   }
 
-  keys.length = 0;
+  keys.length = 0; // 押されたキーをリセット
 }
 
-function play() {
-  let now = song.currentTime();
-  let end = song.duration();
 
-  // 現在の RMS 値を取得
+/////////////////////////////////////////
+// 曲が再生中のみ、draw()関数から呼び出される
+function play() {
+  let now = song.currentTime(); // 現在の再生時間
+  let end = song.duration();    // 曲の終了時間
+
+  // 現在の RMS 値（音圧）を取得
   let rms = amp.getLevel();
 
   // 現在の波形を取得
@@ -85,36 +105,51 @@ function play() {
   // 周波数スペクトル取得
   // let spectrMax = 16;   // 波形の細かさ: 16 から 1024 までで 2 のべき乗の数値
   // let spectrMax = 64;
-  let spectrMax = 256;  // 中間くらい
-  // let spectrMax = 512;
+  // let spectrMax = 256;  // 中間くらい
+  let spectrMax = 512;
   // let spectrMax = 1024; // 一番細かい
   let spectr = fft.analyze(spectrMax);
+  // fft.smooth(0.8);
+  // spectr = fft.linAverages(64);
+  // spectrMax = 16;
+  // console.log(spectr);
+
+
+  let mode = {};
+  if (now > 30) {
+    mode.bass = true;
+  }
+
 
   // 背景
-  noStroke();
-  fill(color(0, 0, 0, 50));
+  noStroke();        // 描線なし
+  fill(0, 0, 0, 50); // 塗りの色（黒 50%)
   rect(0, 0, w, h);
 
-  // スペクトル波形描画
-  push();
-  translate(w/2, h/2);
-  angleMode(DEGREES);
-  noFill();
-  stroke('red');
+  // -------- スペクトル波形描画 --------
+  push(); // この時点での基準点を一時保存
+  translate(w/2, h/2); // 基準点をキャンバス中央にずらす
+  noStroke();
+  fill('red');
+
   beginShape(); // 多角形描画開始
-  // 周波帯 0 から 最大までループ
-  for (let i = 0; i < spectrMax; i++) {
-    let en = map(spectr[i], 0, 255, h/6, h/2); //
-    let p = map(i, 0, spectrMax-1, 0, 360); // point
-    let x = cos(p) * 1 * en;
-    let y = sin(p) * 1 * en;
-    vertex(x, y); // 頂点
+  // 周波帯 最小値 から 最大値までループ
+  let lowCut = 100;
+  let highCut = 100;
+  for (let i = lowCut; i < spectrMax-highCut; i++) {
+    let en = map(spectr[i], 0, 255, h/6, h/2); // 波の高さ
+    let p = map(i, lowCut, spectrMax-highCut-1, 0, 360);    // 波の位置
+    let x = cos(p) * 1 * en; // 点の x 座標
+    let y = sin(p) * 1 * en; // 点の y 座標
+    curveVertex(x, y); // 頂点追加
   }
-  endShape(); // 多角形描画終了
-  pop();
+  endShape(CLOSE); // 多角形描画終了
+
+  pop(); // push()で保存した基準点に戻す
+  // ======== スペクトル波形描画ここまで ========
 
   // 音の定位をマウスの位置に
-  let panning = map(mouseX, 0, w, -1.0, 1.0, true);
+  let panning = map(mouseX, 0, w, -0.5, 0.5, true);
   song.pan(panning);
 
   // 円を描画
@@ -138,6 +173,7 @@ function play() {
   }
   pop();
 
+  // -------- デバッグ情報表示 --------
   debug({
     end: ceil(end * 100) / 100 + ' s',
     now: ceil(now * 100) / 100 + ' s',
@@ -146,6 +182,7 @@ function play() {
   debug({
     keyCode: keyCode,
   }, 10, 20);
+  // ==============================
 
 }
 
