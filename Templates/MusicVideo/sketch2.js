@@ -3,7 +3,7 @@
  * @author Satoshi Soma
  */
 
-let w = 1400;
+let w = 1024;
 let h = 400;
 
 let keys = [];
@@ -101,13 +101,16 @@ function play() {
   angleMode(DEGREES);
   noFill();
   stroke('red');
-  beginShape();
+  beginShape(); // 多角形描画開始
+  // 周波帯 0 から 最大までループ
   for (let i = 0; i < spectrMax; i++) {
-    let x = map(i, 0, spectrMax - 1, -w/2, w/2);
-    let y = map(spectr[i], 0, 255, 0, -h/2);
-    vertex(x, y);
+    let en = map(spectr[i], 0, 255, h/6, h/2); //
+    let p = map(i, 0, spectrMax-1, 0, 360); // point
+    let x = cos(p) * 1 * en;
+    let y = sin(p) * 1 * en;
+    vertex(x, y); // 頂点
   }
-  endShape();
+  endShape(); // 多角形描画終了
   pop();
 
   // 音の定位をマウスの位置に
