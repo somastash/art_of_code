@@ -11,6 +11,7 @@ let keys = []; // 押されたキーを入れる配列
 
 let song;   // サウンドオブジェクト
 let lyrics; // 歌詞
+let mode = {}; // モードスイッチ
 
 let amp; // 振幅解析機
 let fft; // 波形解析機
@@ -109,17 +110,30 @@ function play() {
   let spectrMax = 512;
   // let spectrMax = 1024; // 一番細かい
   let spectr = fft.analyze(spectrMax);
-  // fft.smooth(0.8);
-  // spectr = fft.linAverages(64);
-  // spectrMax = 16;
-  // console.log(spectr);
 
-
-  let mode = {};
-  if (now > 30) {
-    mode.bass = true;
+  // モードスイッチ
+  // NOTE: 特定の再生位置で対応するモードスイッチを ON にする (0 = OFF, 1 = ON)
+  mode.intro = 0;  // イントロ
+  mode.bass  = 0;  // ベース
+  mode.kicks = 0;  // キック
+  mode.gsolo = 0;  // ギターソロ
+  mode.bridge = 0; // ブリッジ
+  if (now < 30) {
+    mode.intro = 1;
   }
-
+  if (now > 30) {
+    mode.intro = 0;
+    mode.bass = 1;
+  }
+  if (now > 53.6) {
+    mode.kicks = 1;
+  }
+  if (now > 65.5) {
+    mode.gsolo = 1;
+  }
+  if (now > 77) {
+    mode.bridge = 1;
+  }
 
   // 背景
   noStroke();        // 描線なし
@@ -129,21 +143,23 @@ function play() {
   // -------- スペクトル波形描画 --------
   push(); // この時点での基準点を一時保存
   translate(w/2, h/2); // 基準点をキャンバス中央にずらす
-  noStroke();
-  fill('red');
+  // noStroke();
+  // fill('red');
+  stroke(0, 100, 50);
 
-  beginShape(); // 多角形描画開始
   // 周波帯 最小値 から 最大値までループ
-  let lowCut = 100;
-  let highCut = 100;
-  for (let i = lowCut; i < spectrMax-highCut; i++) {
-    let en = map(spectr[i], 0, 255, h/6, h/2); // 波の高さ
-    let p = map(i, lowCut, spectrMax-highCut-1, 0, 360);    // 波の位置
-    let x = cos(p) * 1 * en; // 点の x 座標
-    let y = sin(p) * 1 * en; // 点の y 座標
-    curveVertex(x, y); // 頂点追加
+  let min = 100;
+  let max = spectrMax - 50
+  for (let i = min; i < max; i++) {
+    let power = map(spectr[i], 0, 255, 0, h/2); // 波の高さ（エネルギー）
+    let angle = map(i, min, max-1, 0, 360);       // 波の位置を角度に変換（0 ~ 360）
+    let r = h/3; // 半径
+    let x1 = cos(angle) * r;           // 始点の x 座標
+    let y1 = sin(angle) * r;           // 始点の y 座標
+    let x2 = cos(angle) * (r + power); // 終点の x 座標
+    let y2 = sin(angle) * (r + power); // 終点の y 座標
+    line(x1, y1, x2, y2);
   }
-  endShape(CLOSE); // 多角形描画終了
 
   pop(); // push()で保存した基準点に戻す
   // ======== スペクトル波形描画ここまで ========
