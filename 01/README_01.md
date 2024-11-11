@@ -1,15 +1,14 @@
 ---
 marp: true
 paginate: true
-theme: default
-style: @import "../.theme/style.css";
+theme: custom
 ------
 
-<div id="cover">
-	<h1 class="logo">ART_OF_<b>CODE</b></h1>
-	<p class="title">p5.js で学ぶ JavaScript</p>
-  <p class="author">&copy; 2022 Satoshi Soma</p>
-</div>
+<!-- _class: cover -->
+
+<h1 class="logo">ART_OF_<b>CODE</b></h1>
+<p class="title">p5.js で学ぶ JavaScript</p>
+<p class="author">&copy; 2024 Satoshi Soma</p>
 
 ---
 
@@ -47,7 +46,7 @@ HTML, CSS, JS はウェブ<small>（フロントエンド）</small>を支える
 ## JavaScript の活用事例をみてみよう
 
 ### 商品プロモーションサイト
-- [iPhone 15 @ apple.com](https://www.apple.com/iphone-15/)
+- [iPad @ apple.com](https://www.apple.com/jp/ipad/)
 - [マリオ @ nintendo.com](https://www.nintendo.com/jp/switch/aqmxa/index.html)
 
 いずれのサイトも商品の魅力を最大限伝えるため、
@@ -59,7 +58,7 @@ HTML, CSS, JS はウェブ<small>（フロントエンド）</small>を支える
 
 ### ゲーム, アート系
 - [CrossCode クロスコード（ゲーム, 2D）](www.cross-code.com)
-  - Nintendo Switch などのコンソールにも移植されている、90 年代風アクション RPG。クリアに少なくとも 20 時間以上はかかる（実体験）壮大な規模のインディーゲーム。
+  - Nintendo Switch などのコンソールにも移植されている、90 年代風アクション RPG。クリアに 20 時間以上はかかる大規模なインディーゲーム。
 - [Friday Night Funkin（ゲーム, 2D）](https://ninja-muffin24.itch.io/funkin)
   - 一時期流行したリズムゲーム。
 - [three.js（ライブラリ, 3D）](https://threejs.org/)
@@ -102,7 +101,7 @@ alert('Hello World!');
 行の終わりには `;`<small>（セミコロン）</small>をつける。
 
 > 実は `;` を省いてもいいのだが、そこには思わぬ落とし穴が存在するので、
-初心者は必ず `;` をつけることを私は推奨する。
+初心者は必ず `;` をつけることを推奨する。
 
 英語が文の終わりに `.`（ピリオド）を、
 日本語が `。`（句点）をつけるように、
@@ -167,6 +166,7 @@ alert('World'); // 次
 ### 技術によって創出されるアート
 
 - [ライゾマティクスのインスタレーション](https://rhizomatiks.com/work/)
+- [インタラクティブアートまとめ](https://note.com/reona396/n/n3208816eba8a)
 - [フラクタルアート](https://www.youtube.com/results?search_query=fractal+art)
 - [p5.js による作例](https://showcase.p5js.org/#/2021-All)
 
