@@ -1,0 +1,21 @@
+#!/bin/bash
+prj="art_of_code"
+dst="$HOME/Desktop/${prj}_$(date +%Y)"
+if [ -e "$dst" ]; then
+	echo "//// ERROR //// The destination: $dst already exists."
+	exit 1
+fi
+xcode-select --install
+if ! git clone https://github.com/amekusa/art_of_code "$dst"; then
+	echo "//// ERROR //// git clone failed."
+	exit 1
+fi
+if [ ! -d "$dst" ]; then
+	echo "//// ERROR //// $dst is not found after git-clone. There must be something wrong here..."
+	exit 1
+fi
+echo
+echo "---- SUCCESS ----"
+echo "dst: $dst"
+echo "================="
+echo
