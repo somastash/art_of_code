@@ -7,7 +7,7 @@ if [ -e "$dst" ]; then
 fi
 xcode-select --install
 if ! git clone "$src" "$dst"; then
-	echo "//// ERROR //// git clone failed."
+	echo "//// ERROR //// git-clone failed."
 	exit 1
 fi
 if [ ! -d "$dst" ]; then
