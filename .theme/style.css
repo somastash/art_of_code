@@ -20,6 +20,12 @@
   text-align: right;
   color: #0066;
 }
+:root.left {
+  padding-right: 1.5em;
+}
+:root.right {
+  padding-left: 1.5em;
+}
 .logo {
   font-family: Futura, "Century Gothic", sans-serif;
   font-weight: normal !important;
@@ -47,14 +53,24 @@
   letter-spacing: 0.3em;
   text-shadow: 0 -0.3em 0 #60f4, 0 -0.75em 0 #0f66, 0 -1.4em 0 #ff08;
 }
+.red,
+.green,
+.blue {
+  color: hsl(var(--hue), 50%, 50%);
+}
+.red > code,
+.green > code,
+.blue > code {
+  color: hsl(var(--hue), 100%, 70%);
+}
 .red {
-  color: #b44;
+  --hue: 0;
 }
 .green {
-  color: #4b4;
+  --hue: 120;
 }
 .blue {
-  color: #44b;
+  --hue: 240;
 }
 .fl {
   display: block;

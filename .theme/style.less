@@ -41,6 +41,14 @@
       color: #0066;
     }
   }
+
+  &.left {
+    padding-right: 1.5em;
+  }
+  &.right {
+    padding-left: 1.5em;
+  }
+
 }
 
 .logo {
@@ -79,14 +87,22 @@
   }
 }
 
+.red,
+.green,
+.blue {
+  color: hsl(var(--hue), 50%, 50%);
+  > code {
+    color: hsl(var(--hue), 100%, 70%);
+  }
+}
 .red {
-  color: #b44;
+  --hue: 0;
 }
 .green {
-  color: #4b4;
+  --hue: 120;
 }
 .blue {
-  color: #44b;
+  --hue: 240;
 }
 
 .fl {
@@ -135,7 +151,7 @@ em {
 }
 strong {
   background:linear-gradient(transparent 60%, #0f66 60%);
-  
+
   code {
     color: #4f9;
   }
@@ -174,11 +190,11 @@ table {
   }
   &.numtable {
     font-family: @ffCode;
-  
+
     td {
       text-align: right;
     }
-  }  
+  }
 }
 
 img {
