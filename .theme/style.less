@@ -123,6 +123,9 @@
 .cols {
   display: flex;
   width: 100%;
+  &.gap {
+    gap: 1.5em;
+  }
   > * {
     display: block;
     flex: 1;
@@ -142,6 +145,13 @@
   &.c32 > *:first-child,
   &.c23 > *:last-child {
     flex: 3;
+  }
+}
+
+a {
+  code {
+    background-color: var(--color-accent-fg);
+    color: white;
   }
 }
 
