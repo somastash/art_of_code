@@ -5,8 +5,8 @@
 /* marp base styles */
 @import-theme "default";
 
-@fsS: 18pt;
-@fsM: 21pt;
+@fsS: 16pt;
+@fsM: 18pt;
 @fsL: 24pt;
 @fsXL: 27pt;
 @fsMax: 48pt;
@@ -117,6 +117,31 @@
   &.r {
     float: right;
     margin-left: @gap;
+  }
+}
+
+.cols {
+  display: flex;
+  width: 100%;
+  > * {
+    display: block;
+    flex: 1;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &.c21 > *:first-child,
+  &.c12 > *:last-child {
+    flex: 2
+  }
+  &.c32 > *,
+  &.c23 > * {
+    flex: 2;
+  }
+  &.c32 > *:first-child,
+  &.c23 > *:last-child {
+    flex: 3;
   }
 }
 
