@@ -72,6 +72,14 @@
 .blue {
   --hue: 240;
 }
+.bg {
+  padding: 0.75em 1em;
+  border-radius: 1em;
+  backdrop-filter: blur(0.25em);
+}
+.bg.white {
+  background-color: #fffb;
+}
 .fl {
   display: block;
   margin: 0;
@@ -148,7 +156,7 @@ em code {
   font-weight: normal;
 }
 strong {
-  background: linear-gradient(transparent 60%, #0f66 60%);
+  background: linear-gradient(transparent 70%, #0f66 70%);
 }
 strong code {
   color: #4f9;
