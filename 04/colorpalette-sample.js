@@ -26,7 +26,6 @@
  * KEYS
  * s                   : save png
  */
-'use strict';
 
 var stepX;
 var stepY;
