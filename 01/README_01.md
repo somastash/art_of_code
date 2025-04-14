@@ -8,7 +8,7 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b></h1>
 <p class="title">p5.js で学ぶ JavaScript</p>
-<p class="author">&copy; 2024 Satoshi Soma</p>
+<p class="author">&copy; 2025 Satoshi Soma</p>
 
 ---
 
