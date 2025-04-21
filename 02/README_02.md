@@ -8,18 +8,18 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b> #2</h1>
 <p class="title">p5.js で学ぶ JavaScript #2</p>
-<p class="author">&copy; 2024 Satoshi Soma</p>
+<p class="author">&copy; 2025 Satoshi Soma</p>
 
 ---
 
 ## 前回のおさらい 1/2
-- JavaScript は HTML ファイルに *`<script>`* タグを記述して読み込む。
+JavaScript は HTML ファイルに *`<script>`* タグを記述して読み込む。
 
 ```html
 <script src="hello.js"></script>
 ```
 
-- `<script>` タグの中に直接 JS を記述することも可。
+`<script>` タグの中に直接 JS を記述することも可。
 
 ```html
 <script>
