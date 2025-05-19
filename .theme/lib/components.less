@@ -1,0 +1,54 @@
+.reset {
+  .regular;
+  .fs(var(--fs-m));
+  .lh(var(--lh-base));
+}
+
+.bare {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.rounded {
+  .round(.25em);
+}
+
+.thin {
+  .op(.6);
+}
+
+.bg-red,
+.bg-green,
+.bg-blue {
+  .c(white);
+}
+.bg-red {
+  .bg(var(--c-red));
+}
+.bg-green {
+  .bg(var(--c-green));
+}
+.bg-blue {
+  .bg(var(--c-blue));
+}
+
+.red,
+.green,
+.blue {
+  color: hsl(var(--hue), 50%, 50%);
+  > code {
+    color: hsl(var(--hue), 100%, 70%);
+  }
+}
+.red {
+  --hue: 0;
+}
+.green {
+  --hue: 120;
+}
+.blue {
+  --hue: 240;
+}
+
+

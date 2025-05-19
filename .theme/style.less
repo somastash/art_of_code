@@ -5,36 +5,46 @@
 /* marp base styles */
 @import-theme "default";
 
-@fsS: 16pt;
-@fsM: 18pt;
-@fsL: 24pt;
-@fsXL: 27pt;
-@fsMax: 48pt;
-
-@ffFutura: Futura, "Century Gothic", sans-serif;
-@ffCode: Menlo, Monaco, "Courier New", monospace;
-
-@cBlack: #334;
-@cGrey: #aac;
-@cDkBlue: #246;
-
-@hl: 1.5pt; // hairline
-@gap: 1.5em;
+@import "lib/mixins.less";
+@import "lib/components.less";
 
 :root {
-  font-size: @fsM;
-  font-family: Helvetica, Arial, "Hiragino Kaku Gothic Pro", sans-serif;
-  line-height: 1.75;
-  color: @cBlack;
+  --fs-s: 16pt;
+  --fs-m: 18pt;
+  --fs-l: 24pt;
+  --fs-xl: 27pt;
+  --fs-max: 48pt;
+
+  --ff-base: Helvetica, Arial, "Hiragino Kaku Gothic Pro", sans-serif;
+  --ff-futura: Futura, "Century Gothic", sans-serif;
+  --ff-code: Menlo, Monaco, "Courier New", monospace;
+
+  --c-black: #334;
+  --c-grey: #aac;
+  --c-grey-lt: #dde;
+  --c-ink: #246;
+  --c-red: hsl(340 70% 50%);
+  --c-green: hsl(120, 50%, 50%);
+  --c-blue: hsl(240, 50%, 50%);
+
+  --hl: 1.5pt; // hairline
+  --gap: 1.5em;
+
+  --lh-base: 1.75;
+
+  font-size: var(--fs-m);
+  font-family: var(--ff-base);
+  line-height: var(--lh-base);
+  color: var(--c-black);
 
   &.cover {
     .logo {
-      font-size: @fsMax;
+      font-size: var(--fs-max);
     }
     .title {
       font-weight: bold;
-      font-size: @fsL;
-      color: @cDkBlue;
+      font-size: var(--fs-l);
+      color: var(--c-ink);
     }
     .author {
       text-align: right;
@@ -52,7 +62,7 @@
 }
 
 .logo {
-  font-family: @ffFutura;
+  font-family: var(--ff-futura);
   font-weight: normal !important;
   letter-spacing: .1em;
   padding: 0;
@@ -87,24 +97,6 @@
   }
 }
 
-.red,
-.green,
-.blue {
-  color: hsl(var(--hue), 50%, 50%);
-  > code {
-    color: hsl(var(--hue), 100%, 70%);
-  }
-}
-.red {
-  --hue: 0;
-}
-.green {
-  --hue: 120;
-}
-.blue {
-  --hue: 240;
-}
-
 .bg {
   padding: .75em 1em;
   border-radius: 1em;
@@ -117,15 +109,15 @@
 .fl {
   display: block;
   margin: 0;
-  margin-bottom: @gap * .5;
+  margin-bottom: calc(var(--gap) * .5);
 
   &.l {
     float: left;
-    margin-right: @gap;
+    margin-right: var(--gap);
   }
   &.r {
     float: right;
-    margin-left: @gap;
+    margin-left: var(--gap);
   }
 }
 
@@ -157,6 +149,10 @@
   }
 }
 
+.grey-stripes {
+  .stripes(135deg; var(--c-grey-lt); white; 2px; 8px);
+}
+
 a {
   code {
     background-color: var(--color-accent-fg);
@@ -168,20 +164,20 @@ h1,h2,h3 {
   line-height: 1.25;
 }
 h1,h2 {
-  color: @cDkBlue;
+  color: var(--c-ink);
 }
 h2 {
-  font-size: @fsXL;
+  font-size: var(--fs-xl);
 }
 h3 {
-  font-size: @fsL;
+  font-size: var(--fs-l);
 }
 h4,h5,h6 {
-  font-size: @fsM;
+  font-size: var(--fs-m);
 }
 
 small {
-  font-size: @fsS;
+  font-size: var(--fs-s);
 }
 
 em {
@@ -204,7 +200,7 @@ strong {
 ol {
   li {
     &::marker {
-      color: @cGrey;
+      color: var(--c-grey);
       font-family: 'Courier New', Courier, monospace;
       font-weight: bold;
       padding-right: .5em;
@@ -213,19 +209,19 @@ ol {
 }
 
 kbd {
-  background-color: @cBlack;
+  background-color: var(--c-black);
   color: white;
-  font-family: @ffCode;
-  font-size: @fsM;
+  font-family: var(--ff-code);
+  font-size: var(--fs-m);
   line-height: 1;
   padding: .1em .3em;
-  border: .1em solid lighten(@cBlack, 50%);
+  border: .1em solid var(--c-grey);
   border-radius: .3em;
 }
 
 table {
   td, th {
-    border: @hl solid @cGrey;
+    border: var(--hl) solid var(--c-grey);
   }
   thead {
     td, th {
@@ -233,7 +229,7 @@ table {
     }
   }
   &.numtable {
-    font-family: @ffCode;
+    font-family: var(--ff-code);
 
     td {
       text-align: right;
@@ -246,7 +242,7 @@ img {
 }
 
 /* highlight.js theme */
-@import (less) "vs2015.css";
+@import "lib/vs2015.less";
 
 :is(pre, marp-pre) {
   .hljs;
@@ -256,5 +252,6 @@ img {
 
 code {
   .hljs;
-  font-family: @ffCode;
+  font-family: var(--ff-code);
 }
+
