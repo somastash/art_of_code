@@ -36,19 +36,15 @@
 .red,
 .green,
 .blue {
-  color: hsl(var(--hue), 50%, 50%);
-  > code {
-    color: hsl(var(--hue), 100%, 70%);
-  }
+  .bold;
 }
 .red {
-  --hue: 0;
+  .c(var(--c-red));
 }
 .green {
-  --hue: 120;
+  .c(var(--c-green));
 }
 .blue {
-  --hue: 240;
+  .c(var(--c-blue));
 }
-
 

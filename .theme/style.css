@@ -35,21 +35,16 @@
 .red,
 .green,
 .blue {
-  color: hsl(var(--hue), 50%, 50%);
-}
-.red > code,
-.green > code,
-.blue > code {
-  color: hsl(var(--hue), 100%, 70%);
+  font-weight: bold;
 }
 .red {
-  --hue: 0;
+  color: var(--c-red);
 }
 .green {
-  --hue: 120;
+  color: var(--c-green);
 }
 .blue {
-  --hue: 240;
+  color: var(--c-blue);
 }
 :root {
   --fs-s: 16pt;

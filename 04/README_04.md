@@ -249,10 +249,10 @@ i++        // 右: i を 1 増やす
 | 実行順 | 実行コード | 実行内容 |
 |:---:|:----|:----|
 | 1. | `for` | ループ制御開始 |
-| 2. | `let i = 0` | <small>左のパート:</small> ループカウンタの宣言 |
-| 3. | `i < 100` | <small>中央パート:</small> 条件判定（条件に合致しなければここで `for` 文を終了する） |
+| 2. | <code class="red">let i = 0</code> | <small class="red">左のパート:</small> ループカウンタの宣言 |
+| 3. | <code class="green">i < 100</code> | <small class="green">中央パート:</small> 条件判定（条件に合致しなければここで `for` 文を終了する） |
 | 4. | `{ ... }` | `{ }` 内の処理の実行 |
-| 5. | `i++` | <small>右のパート:</small> ループカウンタに +1 |
+| 5. | <code class="blue">i++</code> | <small class="blue">右のパート:</small> ループカウンタに +1 |
 | 6. | - | 3. に戻る |
 
 ```js
