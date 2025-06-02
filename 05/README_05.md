@@ -8,7 +8,7 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b> #5</h1>
 <p class="title">p5.js で学ぶ JavaScript #5</p>
-<p class="author">&copy; 2024 Satoshi Soma</p>
+<p class="author">&copy; 2025 Satoshi Soma</p>
 
 ---
 
@@ -48,7 +48,7 @@ for (let i = 0; i < 100; i++) {
 let i = 0
 ```
 
-1. 左パート
+1. <span class="red">左のパート</span>
 </div>
 <div>
 
@@ -56,7 +56,7 @@ let i = 0
 i < 100
 ```
 
-2. 中央パート
+2. <span class="green">中央パート</span>
 </div>
 <div>
 
@@ -64,7 +64,7 @@ i < 100
 i++
 ```
 
-3. 右パート
+3. <span class="blue">右のパート</span>
 </div>
 
 ---
@@ -72,10 +72,10 @@ i++
 | 実行順 | 実行コード | 実行内容 |
 |:---:|:----|:----|
 | 1. | `for` | ループ制御開始 |
-| 2. | `let i = 0` | <small>左のパート:</small> ループカウンタの宣言 |
-| 3. | `i < 100` | <small>中央パート:</small> 条件判定（条件に合致しなければここで `for` 文を終了する） |
+| 2. | <code class="red">let i = 0</code> | <small class="red">左のパート:</small> ループカウンタの宣言 |
+| 3. | <code class="green">i < 100</code> | <small class="green">中央パート:</small> 条件判定（条件に合致しなければここで `for` 文を終了する） |
 | 4. | `{ ... }` | `{ }` 内の処理の実行 |
-| 5. | `i++` | <small>右のパート:</small> ループカウンタに +1 |
+| 5. | <code class="blue">i++</code> | <small class="blue">右のパート:</small> ループカウンタに +1 |
 | 6. | - | 3. に戻る |
 
 ```js
