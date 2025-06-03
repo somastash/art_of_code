@@ -400,6 +400,92 @@ https://editor.p5js.org/amekusa/sketches/3YAjHkOI-
 
 ---
 
+# ユーザーインタラクション
+入力に応じた処理
+
+---
+
+## マウスカーソルの座標を取得する
+変数 *`mouseX`* と *`mouseY`* には常に**現在のマウスカーソルの座標**が保存されている。
+これらを使用することで、カーソルの位置に図形を表示したり、
+マウスの動きに応じて変化する視覚効果を生み出すことが可能である。
+
+```js
+function draw() {
+  circle(mouseX, mouseY, 50); // カーソルの位置に円を描画
+}
+```
+
+なお、変数 `mouseX` と `mouseY` は*宣言の必要が無い*。
+p5.js において、宣言の必要が無いこれらのような変数を**システム変数**と呼ぶ。
+
+---
+
+## キー入力の判定
+*`keyPressed()`* 関数内に記述したコードは、
+ユーザーが**何らかのキー入力をした際に実行**される。
+
+```js
+function keyPressed() {
+  alert('キーが入力されました。'); // ポップアップを表示
+}
+```
+
+---
+
+システム変数 *`key`* には**最後に入力したキーの名前**が保存されている。
+
+```js
+function keyPressed() {
+  alert(key + 'キーが入力されました。'); // ポップアップ表示
+}
+```
+
+`key` 変数を *`if`* 文の条件式に使用すれば、
+**どのキーが入力されたか**を判定することができる。
+
+```js
+function keyPressed() {
+  if (key == 'd') { // D キーが押されたら
+    alert('DOH!');
+  }
+}
+```
+
+---
+
+`矢印` キーや `Enter` キーなどの特殊なキーは、
+システム変数 *`keyCode`* で判定する。
+
+```js
+function keyPressed() {
+  if (keyCode == UP_ARROW) { // 上キー
+    alert('👆');
+  }
+  if (keyCode == DOWN_ARROW) { // 下キー
+    alert('👇');
+  }
+  if (keyCode == LEFT_ARROW) { // 左キー
+    alert('👈');
+  }
+  if (keyCode == RIGHT_ARROW) { // 右キー
+    alert('👉');
+  }
+  if (keyCode == ENTER) { // Enter キー
+    alert('👍');
+  }
+}
+```
+
+---
+
+## キーが押されているかの判定
+`keyPressed()` 関数はキーが押された*瞬間*に一度だけ実行されるのみだ。
+キーを一定時間**押し続ける**ような入力<small>（いわゆる長押し）</small>の判定には使えない。
+
+`keyIsDown()` 
+
+---
 
 # Appendix: 役に立つ関数, 変数
 
