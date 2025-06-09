@@ -46,6 +46,14 @@
 .blue {
   color: var(--c-blue);
 }
+.challenge {
+  border: 3pt solid var(--c-grey);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+}
+.challenge details summary {
+  text-align: right;
+}
 :root {
   --fs-s: 16pt;
   --fs-m: 18pt;
