@@ -87,11 +87,65 @@ function draw() {
 
 ## SVG データを出力する
 p5.js は外部の *JS ライブラリ*を読み込むことで**機能を拡張**することが可能だ。
-<small>ライブラリとは汎用性や再利用性の高い関数などをまとめ、他のプログラムが利用しやすいようにパッケージングした形で提供されているもの。p5.js 自体もライブラリとしての側面を持つ。</small>
+
+<p class="note">
+ライブラリとは汎用性や再利用性の高い関数などをまとめ、他のプログラムが利用しやすいようにパッケージングした形で提供されているもの。p5.js 自体もライブラリとしての側面を持つ。
+</p>
 
 [p5.js-svg](https://github.com/zenozeng/p5.js-svg) を利用すれば、キャンバスを PNG 画像ではなく、**SVG データ**として出力することができる。
 SVG 画像はベクターデータのため、拡大・縮小・回転などといった加工を無劣化で行うことができる。
 
 ---
 
+### JS ライブラリを読み込む
+外部の JS ファイルを読み込ませるには *`<script>`* タグを `index.html` の `<head>` タグ内に書き加えればいい。*`src`* 属性に URL を書き込めば、*リモートのファイル*を直接読み込ませることもできる。 
+
+p5.js-svg のダウンロード URL は `https://unpkg.com/p5.js-svg@1.6.0` <small>（2025 年現在）</small>となっているため、以下のように `<script>` タグを書き加えよう。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+    <script src="https://unpkg.com/p5.js-svg@1.6.0"></script>
+  </head>
+  ...
+```
+
+---
+
+### キャンバスを SVG モードにする
+p5.js-svg ライブラリを読み込んだ上で、*`createCanvas()`* 関数の **第 3 引数** に *`SVG`* と書き加えると、*SVG モードのキャンバス*を作成できる。
+
+<div class="cols gap">
+
+```js
+function setup() {
+  createCanvas(400, 400); // 通常キャンバス
+}
+```
+
+```js
+function setup() {
+  createCanvas(400, 400, SVG); // SVG キャンバス
+}
+```
+
+</div>
+
+---
+
+### SVG キャンバスを保存する
+SVG キャンバスを作成した上で、`save()` 関数の保存先ファイル名の**拡張子**に *`.svg`* を指定することで、キャンバスを SVG データとして保存することができる。
+
+```js
+function setup() {
+  createCanvas(400, 400, SVG); // SVG キャンバス
+}
+function keyPressed() { // 何らかのキーが入力されたら
+  if (key == 's') { // 最後に押されたキーが S なら
+    save('my_sketch.svg'); // キャンバスを SVG 形式で保存
+  }
+}
+```
 
