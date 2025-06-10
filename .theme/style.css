@@ -46,6 +46,14 @@
 .blue {
   color: var(--c-blue);
 }
+.note {
+  font-size: var(--fs-s);
+  display: block;
+  background: var(--c-grey-lt);
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  border: 1.5pt solid var(--c-grey);
+}
 .challenge {
   border: 3pt solid var(--c-grey);
   border-radius: 0.5em;
@@ -55,7 +63,7 @@
   text-align: right;
 }
 :root {
-  --fs-s: 16pt;
+  --fs-s: 15pt;
   --fs-m: 18pt;
   --fs-l: 24pt;
   --fs-xl: 27pt;
