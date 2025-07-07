@@ -8,7 +8,7 @@ theme: custom
 
 <h1 class="logo">ART_OF_<b>CODE</b> #6</h1>
 <p class="title">p5.js で学ぶ JavaScript #6</p>
-<p class="author">&copy; 2024 Satoshi Soma</p>
+<p class="author">&copy; 2025 Satoshi Soma</p>
 
 ---
 
@@ -246,19 +246,21 @@ let c = img.get(0, 0); // 位置(0, 0) の色を取得
 ```
 
 **`get()`** 関数は **画像上の指定された位置の色** を取得し、
-オブジェクトとして返してくれる。(左上が 0, 0）
+配列として返してくれる。(左上が 0, 0）
 
 ---
 
-取得した **色オブジェクト** は
+取得した色配列は
 **`fill()`** や **`stroke()`** などの関数に渡すことで
 **描画色** として利用することが可能だ。
 
 ```js
-img.loadPixels();
-let c = img.get(0, 0);
-fill(c);
-circle(mouseX, mouseY, 10);
+function draw() {
+  let c = img.get(100, 200); // 画像上 X:100, Y:200 の色を c に保存
+  fill(c);   // 塗りの色を c に指定
+  stroke(c); // 線の色を c に指定
+  circle(0, 0, 30); // 指定した色で円を描画
+}
 ```
 
 ---
