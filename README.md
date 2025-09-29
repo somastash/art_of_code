@@ -1,7 +1,9 @@
+# ART_OF_CODE
 
-```sh
-bash <(curl -s https://raw.githubusercontent.com/amekusa/art_of_code/refs/heads/master/download)
-```
+## License
+This work is licensed under a 
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-ART_OF_CODE &copy; 2022 Satoshi Soma All Rights Reserved.
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+© 2025 Satoshi Soma. Licensed under CC BY-NC-SA 4.0.
