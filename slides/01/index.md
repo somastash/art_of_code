@@ -64,6 +64,7 @@ HTML, CSS, JS はウェブ<small>（フロントエンド）</small>を支える
 - [three.js（ライブラリ, 3D）](https://threejs.org/)
 - [Gamedev.js Jam 2023（ゲームコンテスト）](https://gamedevjs.com/jam/2023/)
 - [Elastic Man（アート, 3D）](https://www.adultswim.com/etcetera/elastic-man/)
+- [Neal Fun（ゲーム, アート）](https://neal.fun/)
 
 インディーゲーム界隈を中心に、*JS 製のゲームエンジン*が採用されることも珍しくなくなってきた。JS 製のゲームは [itch.io](https://itch.io/games/html5) で公開されているものも多い。興味が湧いたらチェックしてみよう。JS 製ゆえ *ブラウザ上で気軽に実行できる* という強みも大きい。
 
@@ -166,6 +167,7 @@ alert('World'); // 次
 ### 技術によって創出されるアート
 
 - [ライゾマティクスのインスタレーション](https://rhizomatiks.com/work/)
+  - [24 drones](https://research.rhizomatiks.com/s/works/24drones/)
 - [インタラクティブアートまとめ](https://note.com/reona396/n/n3208816eba8a)
 - [フラクタルアート](https://www.youtube.com/results?search_query=fractal+art)
 - [p5.js による作例](https://showcase.p5js.org/#/2021-All)
