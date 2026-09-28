@@ -1,14 +1,14 @@
 ---
 marp: true
 paginate: true
-theme: custom
-------
+theme: press
+---
 
 <!-- _class: cover -->
 
 <h1 class="logo">ART_OF_<b>CODE</b></h1>
 <p class="title">p5.js で学ぶ JavaScript</p>
-<p class="author">&copy; 2025 Satoshi Soma</p>
+<p class="author">&copy; 2026 Satoshi Soma</p>
 
 ---
 
@@ -85,8 +85,8 @@ JavaScript は **`.js`** という拡張子のファイルに記述する。
 ---
 
 ### 演習 #1:
-1. `01` フォルダの `index.html` をブラウザと VSCode で開く。
-2. `index.html` の **`<head>` タグの中に `<script>` タグを記述** し、
+1. `01` フォルダの `hello.html` をブラウザと VSCode で開く。
+2. `hello.html` の **`<head>` タグの中に `<script>` タグを記述** し、
     `01` フォルダの **`hello.js`** を読み込む。
 3. `hello.js` を VSCode で開き、以下を記述する。（コピペは無しで）
 ```js
