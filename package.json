@@ -3,7 +3,7 @@
   "name": "art_of_code",
   "version": "1.0.0",
   "scripts": {
-    "build_slides": "marp -wI slides",
+    "build_slides": "marp -I slides",
     "build_theme": "lessc .theme/style.less .theme/style.css",
     "watch": "npm-watch"
   },
