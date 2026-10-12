@@ -229,8 +229,6 @@ let x = 'P' + 'LUCK';  // x = 'PLUCK'
 let y = 'LUCK & ' + x; // y = 'LUCK & PLUCK'
 ```
 
-<p style="text-align:right"><small>This is JoJo reference btw...</small></p>
-
 ---
 
 ## 変数の値は変えられる
