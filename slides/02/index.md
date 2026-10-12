@@ -222,11 +222,11 @@ let z = x * y; // z = 10 * 2
 二つの文字列を足し算した場合、**連結されて一つの文字列** になる。
 
 ```js
-let x = 'P' + 'LUCK';  // x = 'PLUCK'
+let x = 'B' + 'read';  // x = 'Bread'
 ```
 
 ```js
-let y = 'LUCK & ' + x; // y = 'LUCK & PLUCK'
+let y = 'Bread & Butter' + x; // y = 'LUCK & PLUCK'
 ```
 
 ---
