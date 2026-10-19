@@ -8,7 +8,7 @@ theme: press
 
 <h1 class="logo">ART_OF_<b>CODE</b> #2</h1>
 <p class="title">p5.js で学ぶ JavaScript #2</p>
-<p class="author">&copy; 2025 Satoshi Soma</p>
+<p class="author">&copy; 2026 Satoshi Soma</p>
 
 ---
 
