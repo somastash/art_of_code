@@ -1,8 +1,8 @@
 ---
 marp: true
 paginate: true
-theme: custom
-------
+theme: press
+---
 
 <!-- _class: cover -->
 
