@@ -382,16 +382,16 @@ if (x < y) {
 **3つ以上の条件分岐** をつくることも可能。
 ```js
 if (pet == 'dog') {          // 分岐:1
-  alert('🐶 ワン');
+  alert('🐶');
 
 } else if (pet == 'cat') {   // 分岐:2
-  alert('🐱 ニャー');
+  alert('🐱');
 
 } else if (pet == 'mouse') { // 分岐:3
-  alert('🐭 チュー');
+  alert('🐭');
 
 } else { // いずれの条件も満たさなかった場合
-  alert('❓❓❓');
+  alert('❓');
 }
 ```
 
